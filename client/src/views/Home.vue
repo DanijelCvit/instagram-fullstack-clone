@@ -57,6 +57,10 @@ ul {
   list-style-type: none;
 }
 
+li:first-of-type {
+  margin-top: 2rem;
+}
+
 li {
   margin-bottom: 2rem;
 }
