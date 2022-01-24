@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-     <TheHeader />
+    <TheHeader />
     <div class="container">
       <ul>
         <li v-for="post in posts" :key="post.id">
@@ -16,10 +16,10 @@ import PostCard from "@/components/PostCard.vue";
 import TheHeader from "@/components/TheHeader.vue";
 
 export default {
-components: {
+  components: {
     TheHeader,
     PostCard,
-},
+  },
   data() {
     return {
       user: {
@@ -48,6 +48,8 @@ components: {
         },
       ],
     };
+  },
+};
 </script>
 
 <style scoped>
