@@ -19,7 +19,7 @@
         >{{ post.body }}
       </p>
     </div>
-    <div>
+    <form>
       <div class="input-group border-top">
         <input
           type="text"
@@ -36,7 +36,7 @@
           Post
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
