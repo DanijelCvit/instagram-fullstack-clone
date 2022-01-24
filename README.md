@@ -4,6 +4,13 @@ This repository functions as the basis of the instagram clone project.
 
 ## Development
 
+### We'll be using the following stack:
+
+- VueJS
+- Bootstrap
+- Express
+- MySQL
+
 ## Installing Dependencies
 
 # Structure
