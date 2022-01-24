@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid d-flex">
-      <div id="nav" class="navbar-nav w-100 mb-2 mb-lg-0 d-flex">
-        <div id="left" class="w-25 d-flex">
+  <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div id="nav" class="navbar-nav d-flex w-100 justify-content-between">
+        <div id="left" class="d-flex">
           <router-link to="/" class="nav-link"
             ><i class="fas fa-home"></i
           ></router-link>
@@ -10,9 +10,10 @@
             ><i class="far fa-plus-square"></i
           ></router-link>
         </div>
+
         <div
           id="center"
-          class="w-50 d-flex px-5 input-group-sm mb-2 align-self-center flex-nowrap"
+          class="input-group-sm mb-2 align-self-center d-flex flex-nowrap"
         >
           <input
             type="text"
@@ -21,7 +22,8 @@
             placeholder="Search"
           />
         </div>
-        <div id="right" class="w-25 d-flex justify-content-end">
+
+        <div id="right" class="d-flex">
           <router-link to="/about" class="nav-link"
             ><i class="fas fa-user-circle"></i
           ></router-link>
@@ -44,12 +46,10 @@ export default {
 
 #nav > * {
   font-weight: bold;
-
   text-decoration: none;
 }
 
-#nav a:hover,
-#navRight a:hover {
+#nav a:hover {
   color: #2a7553;
 }
 
