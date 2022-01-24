@@ -3,11 +3,11 @@
     <div class="d-flex align-items-center p-1">
       <img
         id="avatar"
-        :src="avatar"
+        :src="user.avatar"
         class="card-img-top rounded-circle p-1"
         alt=""
       />
-      <h5 class="card-title ps-2">{{ username }}</h5>
+      <h5 class="card-title ps-2">{{ user.name }}</h5>
     </div>
     <img :src="post.image" class="" alt="" />
     <div class="card-body">
@@ -15,7 +15,7 @@
     </div>
     <div id="text-body" class="card-body">
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ username }}</span
+        <span class="fw-bold pe-1">{{ user.name }}</span
         >{{ post.body }}
       </p>
     </div>
@@ -42,19 +42,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      username: "danijel",
-      avatar:
-        "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
-      post: {
-        title: "This is my post",
-        image:
-          "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80",
-        body: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-      },
-    };
-  },
+  props: ["post", "user"],
 };
 </script>
 
