@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2022 at 10:00 AM
+-- Generation Time: Jan 25, 2022 at 03:50 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.18
 
@@ -24,66 +24,64 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Table structure for table `comment`
 --
 
-CREATE TABLE `comments` (
-  `commentID` int(5) NOT NULL,
-  `userID` int(5) NOT NULL,
-  `postID` int(5) NOT NULL,
+CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
   `comment` varchar(240) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comments`
+-- Dumping data for table `comment`
 --
 
-INSERT INTO `comments` (`commentID`, `userID`, `postID`, `comment`) VALUES
+INSERT INTO `comment` (`comment_id`, `user_id`, `post_id`, `comment`) VALUES
 (10000, 10001, 10000, 'Wow, looks delicious!');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Table structure for table `post`
 --
 
-CREATE TABLE `posts` (
-  `postID` int(5) NOT NULL,
-  `userID` int(5) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `description` varchar(240) DEFAULT NULL,
-  `likes` int(5) DEFAULT NULL,
-  `commentID` int(5) DEFAULT NULL
+CREATE TABLE `post` (
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `image` varchar(1000) NOT NULL,
+  `description` varchar(240) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `posts`
+-- Dumping data for table `post`
 --
 
-INSERT INTO `posts` (`postID`, `userID`, `image`, `description`, `likes`, `commentID`) VALUES
-(10000, 10000, 'https://unsplash.com/photos/q11NM0cFFzY', 'Moroccan tajin with tafernout bread', 10000, NULL);
+INSERT INTO `post` (`post_id`, `user_id`, `image`, `description`) VALUES
+(10000, 10000, 'https://unsplash.com/photos/q11NM0cFFzY', 'Moroccan tajin with tafernout bread');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `users` (
-  `userID` int(5) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `firstName` varchar(12) NOT NULL,
-  `lastName` varchar(12) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `image` varchar(200) DEFAULT NULL
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `first_name` varchar(1000) NOT NULL,
+  `last_name` varchar(1000) NOT NULL,
+  `username` varchar(1000) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `image` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `users` (`userID`, `email`, `firstName`, `lastName`, `username`, `password`, `image`) VALUES
+INSERT INTO `user` (`user_id`, `email`, `first_name`, `last_name`, `username`, `password`, `image`) VALUES
 (10000, 'brad.drummer34@yahoo.com', 'Brad', 'Haupt', 'bradhaupt', 'password', 'https://unsplash.com/photos/q11NM0cFFzY'),
 (10001, 'tester@testnet.com', 'Elvis', 'Presley', 'tester', 'password', 'https://unsplash.com/photos/QeVmJxZOv3k');
 
@@ -92,48 +90,47 @@ INSERT INTO `users` (`userID`, `email`, `firstName`, `lastName`, `username`, `pa
 --
 
 --
--- Indexes for table `comments`
+-- Indexes for table `comment`
 --
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`commentID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `postID` (`postID`);
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `posts`
+-- Indexes for table `post`
 --
-ALTER TABLE `posts`
-  ADD PRIMARY KEY (`postID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `commentID` (`commentID`);
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`userID`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT for table `comment`
 --
-ALTER TABLE `comments`
-  MODIFY `commentID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
 
 --
--- AUTO_INCREMENT for table `posts`
+-- AUTO_INCREMENT for table `post`
 --
-ALTER TABLE `posts`
-  MODIFY `postID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+ALTER TABLE `post`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `userID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
