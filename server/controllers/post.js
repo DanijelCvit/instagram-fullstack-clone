@@ -2,7 +2,7 @@ let posts = [
   {
     postID: 1,
     userID: 1,
-    image: "https://unsplash.com/photos/q11NM0cFFzY",
+    image: "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554__340.jpg",
     description: "Moroccan tajin with tafernout bread",
     likes: 10000,
   },
@@ -20,7 +20,9 @@ export const getPost = (req, res) => {
   res.status(200).json(post);
 };
 
-export const getPosts = (req, res) => {};
+export const getPosts = (req, res) => {
+  res.status(200).json(posts);
+};
 
 export const createPost = (req, res) => {};
 

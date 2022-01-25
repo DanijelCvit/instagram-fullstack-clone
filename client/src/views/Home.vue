@@ -27,33 +27,15 @@ export default {
         avatar:
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
-      posts: [
-        {
-          title: "This is my post",
-          image:
-            "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80",
-          body: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          title: "This is my post",
-          image:
-            "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80",
-          body: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          title: "This is my post",
-          image:
-            "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=843&q=80",
-          body: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-      ],
+      posts: [],
     };
   },
   async mounted() {
     try {
-      const res = await fetch("http://localhost:3000/posts/1");
-      const post = await res.json();
-      console.log(post);
+      const res = await fetch("http://localhost:3000/posts/");
+      const posts = await res.json();
+      this.posts = posts;
+      console.log(posts);
     } catch (error) {
       console.log("Something went wrong", error);
     }
