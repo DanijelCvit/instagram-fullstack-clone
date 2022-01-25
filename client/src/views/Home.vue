@@ -2,7 +2,7 @@
   <div class="home">
     <TheHeader />
     <div class="container">
-      <ul>
+      <ul class="ps-0">
         <li v-for="post in posts" :key="post.id">
           <post-card :post="post" :user="user" />
         </li>
@@ -55,6 +55,10 @@ export default {
 <style scoped>
 ul {
   list-style-type: none;
+}
+
+li:first-of-type {
+  margin-top: 2rem;
 }
 
 li {
