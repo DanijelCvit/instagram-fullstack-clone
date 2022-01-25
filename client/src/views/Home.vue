@@ -1,58 +1,20 @@
 <template>
   <div class="home">
     <TheHeader />
-    <div class="container">
-      <ul class="ps-0">
-        <li v-for="post in posts" :key="post.id">
-          <post-card :post="post" :user="user" />
-        </li>
-      </ul>
-    </div>
+    <posts-list />
   </div>
 </template>
 
 <script>
-import PostCard from "@/components/PostCard.vue";
 import TheHeader from "@/components/TheHeader.vue";
+import PostsList from "../components/PostsList.vue";
 
 export default {
   components: {
     TheHeader,
-    PostCard,
-  },
-  data() {
-    return {
-      user: {
-        name: "danijel",
-        avatar:
-          "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
-      },
-      posts: [],
-    };
-  },
-  async mounted() {
-    try {
-      const res = await fetch("http://localhost:3000/posts/");
-      const posts = await res.json();
-      this.posts = posts;
-      console.log(posts);
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
+    PostsList,
   },
 };
 </script>
 
-<style scoped>
-ul {
-  list-style-type: none;
-}
-
-li:first-of-type {
-  margin-top: 2rem;
-}
-
-li {
-  margin-bottom: 2rem;
-}
-</style>
+<style scoped></style>
