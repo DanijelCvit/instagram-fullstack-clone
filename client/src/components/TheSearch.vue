@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div @click="resultsVisible = false" class="overlay"></div>
+    <div
+      v-if="resultsVisible"
+      @click="resultsVisible = false"
+      class="overlay"
+    ></div>
     <div class="position-relative">
       <input
         @click="resultsVisible = !resultsVisible"
