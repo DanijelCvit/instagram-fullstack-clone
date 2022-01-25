@@ -22,27 +22,27 @@ function queryDatabase (sql) {
 };
 
 function queryPosts() {
-  let sql = "SELECT * FROM `posts`";
+  let sql = "SELECT * FROM `post`";
   queryDatabase(sql);
 };
 
 function queryUserPosts(userID) {
-  let sql = "SELECT * FROM `posts` WHERE userID = " + userID;
+  let sql = "SELECT * FROM `post` WHERE user_id = " + userID;
   queryDatabase(sql);
 };
 
 function queryUsers() {
-  let sql = "SELECT * FROM `users`";
+  let sql = "SELECT * FROM `user`";
   queryDatabase(sql);
 };
 
 function queryComments() {
-  let sql = "SELECT * FROM `comments`";
+  let sql = "SELECT * FROM `comment`";
   queryDatabase(sql);
 };
 
 function generalQuery(select, from, where, is) {
-  let sql = "SELECT" + select + "FROM `" + from + "`" + "WHERE" + where + "IS" + is;
+  let sql = `SELECT ${select} FROM ${from} WHERE ${where} IS ${is}`;
   queryDatabase(sql);
 };
 
