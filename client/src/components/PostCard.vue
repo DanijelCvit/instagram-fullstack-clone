@@ -12,11 +12,12 @@
     <img :src="post.image" class="" alt="" />
     <div class="card-body">
       <button class="btn p-0"><i class="far fa-heart"></i></button>
+      <span class="ps-2">{{ post.likes }}</span>
     </div>
     <div id="text-body" class="card-body">
       <p class="card-text">
         <span class="fw-bold pe-1">{{ user.name }}</span
-        >{{ post.body }}
+        >{{ post.description }}
       </p>
     </div>
     <form>
