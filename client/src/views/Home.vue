@@ -49,6 +49,15 @@ export default {
       ],
     };
   },
+  async mounted() {
+    try {
+      const res = await fetch("http://localhost:3000/posts/1");
+      const post = await res.json();
+      console.log(post);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  },
 };
 </script>
 
