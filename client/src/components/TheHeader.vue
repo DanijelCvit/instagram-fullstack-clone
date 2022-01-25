@@ -11,18 +11,9 @@
           ></router-link>
         </div>
 
-        <div
-          id="center"
-          class="input-group-sm mb-2 align-self-center d-flex flex-nowrap"
-        >
-          <input
-            type="text"
-            class="form-control"
-            name=""
-            placeholder="Search"
-          />
+        <div id="center" class="mb-2 align-self-center d-flex flex-nowrap">
+          <the-search />
         </div>
-
         <div id="right" class="d-flex">
           <router-link to="/about" class="nav-link"
             ><i class="fas fa-user-circle"></i
@@ -34,7 +25,9 @@
 </template>
 
 <script>
+import TheSearch from "./TheSearch.vue";
 export default {
+  components: { TheSearch },
   name: "TheHeader",
 };
 </script>
