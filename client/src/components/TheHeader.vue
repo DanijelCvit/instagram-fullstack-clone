@@ -6,7 +6,7 @@
           <router-link to="/" class="nav-link"
             ><i class="fas fa-home"></i
           ></router-link>
-          <router-link to="/about" class="nav-link"
+          <router-link to="/create-post" class="nav-link"
             ><i class="far fa-plus-square"></i
           ></router-link>
         </div>

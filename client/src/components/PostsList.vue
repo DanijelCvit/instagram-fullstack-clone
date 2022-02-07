@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ul class="ps-0">
+    <ul class="ps-0 col-8 mx-auto">
       <li v-for="post in posts" :key="post.id">
         <post-card :post="post" :user="user" />
       </li>
