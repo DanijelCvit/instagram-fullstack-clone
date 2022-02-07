@@ -1,5 +1,6 @@
 import mysql from "mysql";
 import util from "util";
+import { POSTS } from "../constants.js";
 
 // Make a database connection
 const connection = mysql.createConnection({
@@ -15,10 +16,15 @@ console.log(process.env);
 // Convert query function with callback into a Promise
 const execQuery = util.promisify(connection.query.bind(connection));
 
-export const getPost = (req, res) => {
+export const getPost = async (req, res) => {
   const id = parseInt(req.params.id);
 
-  if (!post) {
+  let post;
+  try {
+    [post] = await execQuery(
+      `SELECT * FROM ${POSTS.TABLE_NAME} WHERE ID=${id}`
+    );
+  } catch (error) {
     return res.status(404).json({ msg: `Error: no post with id: ${id}` });
   }
 
@@ -29,15 +35,41 @@ export const getPost = (req, res) => {
 export const getPosts = async (req, res) => {
   let posts;
   try {
-    posts = await execQuery("SELECT * FROM post");
+    posts = await execQuery(`SELECT * FROM ${POSTS.TABLE_NAME}`);
   } catch (error) {
-    res.status(500).json({ msg: "Query to database resulted in an error" });
+    return res
+      .status(500)
+      .json({ msg: "Query to database resulted in an error" });
   }
 
   res.status(200).json(posts);
 };
 
 export const createPost = async (req, res) => {
+  const { destination, filename } = req.file;
+  const { user_id, description } = req.body;
+
+  // Check if input is valid
+  if (!filename || !user_id || !description) {
+    return res.status(404).json({ msg: "Missing input data" });
+  }
+  // Store data to disk
+  const post = {
+    user_id,
+    description,
+    image: `${process.env.APP_URL}/${filename}`,
+  };
+  const query = `INSERT INTO ${POSTS.TABLE_NAME} SET ?`;
+
+  try {
+    await execQuery(query, post);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: "Query to database resulted in an error", error });
+  }
+  res.status(200).json({ msg: "New post has been created" });
+};
   
 };
 
@@ -54,7 +86,7 @@ export const getUser = async (req, res) => {
   try {
     user = await execQuery(`SELECT * FROM user WHERE id = 10000`); 
   } catch (error) {
-    res.status(500).json({ msg: "User query to database resulted in an error" });
+   return res.status(500).json({ msg: "User query to database resulted in an error" });
   }
 
   res.status(200).json(user);
