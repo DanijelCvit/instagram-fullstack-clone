@@ -17,11 +17,12 @@ const execQuery = util.promisify(connection.query.bind(connection));
 export const getPost = async (req, res) => {
   const id = parseInt(req.params.id);
 
-  const post = await execQuery(
-    `SELECT * FROM ${POSTS.TABLE_NAME} WHERE ID=${id}`
-  );
-
-  if (!post) {
+  let post;
+  try {
+    [post] = await execQuery(
+      `SELECT * FROM ${POSTS.TABLE_NAME} WHERE ID=${id}`
+    );
+  } catch (error) {
     return res.status(404).json({ msg: `Error: no post with id: ${id}` });
   }
 
@@ -34,7 +35,9 @@ export const getPosts = async (req, res) => {
   try {
     posts = await execQuery(`SELECT * FROM ${POSTS.TABLE_NAME}`);
   } catch (error) {
-    res.status(500).json({ msg: "Query to database resulted in an error" });
+    return res
+      .status(500)
+      .json({ msg: "Query to database resulted in an error" });
   }
 
   res.status(200).json(posts);
@@ -45,16 +48,23 @@ export const createPost = async (req, res) => {
   const { user_id, description } = req.body;
 
   // Check if input is valid
-
+  if (!filename || !user_id || !description) {
+    return res.status(404).json({ msg: "Missing input data" });
+  }
   // Store data to disk
-
-  const post = { user_id, description, image: `${destination}/${filename}` };
+  const post = {
+    user_id,
+    description,
+    image: `${process.env.APP_URL}/${filename}`,
+  };
   const query = `INSERT INTO ${POSTS.TABLE_NAME} SET ?`;
 
   try {
     await execQuery(query, post);
   } catch (error) {
-    res.status(500).json({ msg: "Query to database resulted in an error" });
+    return res
+      .status(500)
+      .json({ msg: "Query to database resulted in an error", error });
   }
   res.status(200).json({ msg: "New post has been created" });
 };
