@@ -41,9 +41,14 @@ export const getPosts = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  const { user_id, image, description } = req.body;
+  const { destination, filename } = req.file;
+  const { user_id, description } = req.body;
 
-  const post = { user_id, image, description };
+  // Check if input is valid
+
+  // Store data to disk
+
+  const post = { user_id, description, image: `${destination}/${filename}` };
   const query = `INSERT INTO ${POSTS.TABLE_NAME} SET ?`;
 
   try {
