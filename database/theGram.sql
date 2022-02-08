@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2022 at 10:08 AM
+-- Generation Time: Feb 08, 2022 at 01:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -31,7 +31,9 @@ CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `comment` varchar(240) NOT NULL
+  `comment` varchar(240) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -44,17 +46,23 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `image` varchar(1000) NOT NULL,
-  `description` varchar(240) DEFAULT NULL
+  `description` varchar(240) DEFAULT NULL,
+  `slug` varchar(10) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `image`, `description`) VALUES
-(10012, 10000, 'http://localhost:3000/uploaded_file-1644308102286-473993720pexels-evg-kowalievska-1170986.jpg', '\"Hello Kitty\"'),
-(10013, 10001, 'http://localhost:3000/uploaded_file-1644310958676-581984979pexels-evg-kowalievska-1170986.jpg', 'aaa'),
-(10014, 10001, 'http://localhost:3000/uploaded_file-1644310982386-522389262pexels-evg-kowalievska-1170986.jpg', 'bbbb');
+INSERT INTO `posts` (`id`, `user_id`, `image`, `description`, `slug`, `created_at`, `updated_at`) VALUES
+(10031, 10000, 'http://localhost:3000/uploaded_file-1644324733148-58574326istockphoto-499571753-612x612.jpg', 'cat 1', 'JlhzGcJOsj', '2022-02-08 13:52:13', '2022-02-08 13:52:13'),
+(10032, 10000, 'http://localhost:3000/uploaded_file-1644324746882-930522394istockphoto-858688716-612x612.jpg', 'cat 2', 'CJcdsOinDl', '2022-02-08 13:52:26', '2022-02-08 13:52:26'),
+(10033, 10000, 'http://localhost:3000/uploaded_file-1644324756578-207819999istockphoto-977318096-612x612.jpg', 'cat 3', 'lfxMYWCGwf', '2022-02-08 13:52:36', '2022-02-08 13:52:36'),
+(10034, 10000, 'http://localhost:3000/uploaded_file-1644324770578-281973867istockphoto-1071204696-612x612.jpg', 'cat 4', 'tmrwegnowO', '2022-02-08 13:52:50', '2022-02-08 13:52:50'),
+(10035, 10000, 'http://localhost:3000/uploaded_file-1644324829821-159998480istockphoto-1220248041-612x612.jpg', 'cat 5', 'pLMkCdpBOL', '2022-02-08 13:53:49', '2022-02-08 13:53:49'),
+(10036, 10000, 'http://localhost:3000/uploaded_file-1644324918697-972781390istockphoto-1337484588-612x612.jpg', 'cat 6', 'iQeQ-vNNRv', '2022-02-08 13:55:18', '2022-02-08 13:55:18');
 
 -- --------------------------------------------------------
 
@@ -97,6 +105,7 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -119,7 +128,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10015;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10037;
 
 --
 -- AUTO_INCREMENT for table `users`
