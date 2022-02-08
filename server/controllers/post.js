@@ -44,7 +44,6 @@ export const getPosts = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-};
   const { destination, filename } = req.file;
   const { user_id, description } = req.body;
 
