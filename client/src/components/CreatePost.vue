@@ -1,7 +1,7 @@
 <template>
 		<div class="row justify-content-center mt-5">
 			<div class="col-3">
-			  <form class="container card py-2">
+				<form class="container card py-2">
 					<div class="form-group">
 						<h2>Create Post</h2><br>
 						<label for="Image">Image</label>
@@ -44,19 +44,19 @@
 				this.post.description = e.target.value
 			},
 			onFileChange(e) {
-			  const files = e.target.files || e.dataTransfer.files;
-			  if (!files.length)
+				const files = e.target.files || e.dataTransfer.files;
+				if (!files.length)
 				return;
-			  this.createImage(files[0]);
+				this.createImage(files[0]);
 			},
 			createImage(file) {
-			  const reader = new FileReader();
-			  const vm = this;
+				const reader = new FileReader();
+				const vm = this;
 
-			  reader.onload = (e) => {
+				reader.onload = (e) => {
 				vm.post.image = e.target.result;
-			  };
-			  reader.readAsDataURL(file);
+				};
+				reader.readAsDataURL(file);
 			},
 		},
 	};
