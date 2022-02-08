@@ -59,14 +59,15 @@ export const createPost = async (req, res) => {
   };
   const query = `INSERT INTO ${POSTS.TABLE_NAME} SET ?`;
 
+  let result;
   try {
-    await execQuery(query, post);
+    result = await execQuery(query, post);
   } catch (error) {
     return res
       .status(500)
       .json({ msg: "Query to database resulted in an error", error });
   }
-  res.status(200).json({ msg: "New post has been created" });
+  res.redirect(200, `http://localhost:8080/posts/${result.insertId}`);
 };
 
 export const updatePost = async (req, res) => {};
