@@ -38,6 +38,6 @@ router.get("/", getPosts);
 router.get("/:slug", getPost);
 router.post("/", upload.single("uploaded_file"), createPost);
 router.patch("/:id", updatePost);
-router.delete("/:id", deletePost);
+router.delete("/:slug", deletePost);
 
 export default router;

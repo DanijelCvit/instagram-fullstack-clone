@@ -12,6 +12,7 @@ export const POSTS = {
   USER_ID: "user_id",
   IMAGE: "image",
   DESCRIPTION: "description",
+  SLUG: "slug",
 };
 
 export const USERS = {

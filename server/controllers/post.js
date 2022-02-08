@@ -2,6 +2,8 @@ import mysql from "mysql";
 import util from "util";
 import { POSTS } from "../constants.js";
 import createSlug from "../utils/utils.js";
+import fsPromises from "fs/promises";
+import path from "path";
 
 // Make a database connection
 const connection = mysql.createConnection({
@@ -54,12 +56,11 @@ export const createPost = async (req, res) => {
     return res.status(404).json({ msg: "Missing input data" });
   }
 
-  const slug = createSlug();
   const post = {
     user_id,
     description,
-    image: `${process.env.APP_URL}/${filename}`,
-    slug,
+    image: filename,
+    slug: createSlug(),
   };
   const query = `INSERT INTO ${POSTS.TABLE_NAME} SET ?`;
 
@@ -68,24 +69,35 @@ export const createPost = async (req, res) => {
   } catch (error) {
     return res
       .status(500)
-      .json({ msg: "Query to database resulted in an error", error });
+      .json({ msg: "Query to database resulted in an error" });
   }
+  // redirect to the homepage
   res.redirect(200, `http://localhost:8080/`);
 };
 
 export const updatePost = async (req, res) => {};
 
-export const deletePost = async (req, res) => {};
+export const deletePost = async (req, res) => {
+  const { slug } = req.params;
 
-export const getUser = async (req, res) => {
-  let user;
+  // TODO: add user validation
+  // const { user_id } = req.body;
+  // Check if user is allowed to delete this post
+
+  const imageQuery = `SELECT ${POSTS.IMAGE} FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
+  const deleteQuery = `DELETE FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
+
   try {
-    user = await execQuery(`SELECT * FROM user WHERE id = 10000`);
+    const [{ image }] = await execQuery(imageQuery, slug);
+    await execQuery(deleteQuery, slug);
+
+    await fsPromises.unlink(path.resolve(`public/images/${image}`));
   } catch (error) {
+    console.log(error);
     return res
       .status(500)
-      .json({ msg: "User query to database resulted in an error" });
+      .json({ msg: "Query to database resulted in an error" });
   }
 
-  res.status(200).json(user);
+  res.status(200).json({ msg: "Post has been deleted" });
 };
