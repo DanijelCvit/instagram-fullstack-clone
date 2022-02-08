@@ -3,3 +3,4 @@ package-lock.json
 client/package-lock.json
 .env
 public/images/
+server/public/images

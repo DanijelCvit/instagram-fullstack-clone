@@ -41,6 +41,7 @@
       <post-card :post="post" :user="user" />
     </div>
   </div>
+
 </template>
 
 <script>
@@ -85,6 +86,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
