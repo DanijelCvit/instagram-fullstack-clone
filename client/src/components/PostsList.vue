@@ -29,7 +29,6 @@ export default {
       const res = await fetch("http://localhost:3000/posts/");
       const posts = await res.json();
       this.posts = posts;
-      console.log(posts);
     } catch (error) {
       console.log("Something went wrong", error);
     }

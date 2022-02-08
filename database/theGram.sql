@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2022 at 07:33 PM
+-- Generation Time: Feb 08, 2022 at 10:08 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -34,13 +34,6 @@ CREATE TABLE `comments` (
   `comment` varchar(240) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `user_id`, `post_id`, `comment`) VALUES
-(10000, 10001, 10000, 'Wow, looks delicious!');
-
 -- --------------------------------------------------------
 
 --
@@ -59,15 +52,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `image`, `description`) VALUES
-(10000, 10000, 'https://images.unsplash.com/photo-1643019237176-8ae0859f1123', 'Moroccan tajin with tafernout bread'),
-(10001, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10002, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10003, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10004, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10005, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10006, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10007, 10000, 'https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg', 'Cute cat image'),
-(10009, 10000, 'public/images/uploaded_file-1644251312179-287895624pexels-evg-kowalievska-1170986.jpg', '\"Hello Kitty\"');
+(10012, 10000, 'http://localhost:3000/uploaded_file-1644308102286-473993720pexels-evg-kowalievska-1170986.jpg', '\"Hello Kitty\"'),
+(10013, 10001, 'http://localhost:3000/uploaded_file-1644310958676-581984979pexels-evg-kowalievska-1170986.jpg', 'aaa'),
+(10014, 10001, 'http://localhost:3000/uploaded_file-1644310982386-522389262pexels-evg-kowalievska-1170986.jpg', 'bbbb');
 
 -- --------------------------------------------------------
 
@@ -132,7 +119,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10010;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10015;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -148,14 +135,14 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `FK_comment_post` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `FK_comment_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FK_comment_post` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_comment_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FK_post_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
