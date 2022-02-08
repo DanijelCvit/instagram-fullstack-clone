@@ -11,8 +11,6 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-console.log(process.env);
-
 // Convert query function with callback into a Promise
 const execQuery = util.promisify(connection.query.bind(connection));
 
