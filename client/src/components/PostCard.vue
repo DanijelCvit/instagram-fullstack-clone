@@ -20,14 +20,12 @@
         >{{ post.description }}
       </p>
     </div>
-    <comments />
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import Comments from "./Comments.vue";
 export default {
-  components: { Comments },
   props: ["post", "user"],
 };
 </script>
