@@ -60,7 +60,7 @@ export default {
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
       post: {
-        image: "https://img.icons8.com/material/344/image.png",
+        image: null,
         description: "Description",
       },
     };
@@ -77,10 +77,9 @@ export default {
     },
     createImage(file) {
       const reader = new FileReader();
-      const vm = this;
 
       reader.onload = (e) => {
-        vm.post.image = e.target.result;
+        this.post.image = e.target.result;
       };
       reader.readAsDataURL(file);
     },
