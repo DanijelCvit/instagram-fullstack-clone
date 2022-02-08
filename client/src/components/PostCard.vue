@@ -9,7 +9,7 @@
       />
       <h5 class="card-title ps-2">{{ user.name }}</h5>
     </div>
-    <img :src="post.image" class="" alt="" />
+    <img :src="'http://localhost:3000/' + post.image" class="" alt="" />
     <div class="card-body">
       <button class="btn p-0"><i class="far fa-heart"></i></button>
       <span class="ps-2">{{ post.likes }}</span>
