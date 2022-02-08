@@ -2,7 +2,9 @@
   <div class="container">
     <ul class="ps-0 col-8 mx-auto">
       <li v-for="post in posts" :key="post.id">
-        <post-card :post="post" :user="user"><comments /></post-card>
+        <post-card appUrl="http://localhost:3000/" :post="post" :user="user"
+          ><comments
+        /></post-card>
       </li>
     </ul>
   </div>
@@ -31,7 +33,6 @@ export default {
       const res = await fetch("http://localhost:3000/posts/");
       const posts = await res.json();
       this.posts = posts;
-
     } catch (error) {
       console.log("Something went wrong", error);
     }

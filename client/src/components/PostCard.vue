@@ -9,15 +9,14 @@
       />
       <h5 class="card-title ps-2">{{ user.name }}</h5>
     </div>
-    <img :src="'http://localhost:3000/' + post.image" class="" alt="" />
+    <img :src="imageUrl" class="" alt="" />
     <div class="card-body">
       <button class="btn p-0"><i class="far fa-heart"></i></button>
       <span class="ps-2">{{ post.likes }}</span>
     </div>
     <div id="text-body" class="card-body">
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ user.name }}</span
-        >{{ post.description }}
+        <span class="fw-bold pe-1">{{ user.name }}</span>
       </p>
     </div>
     <slot></slot>
@@ -26,7 +25,12 @@
 
 <script>
 export default {
-  props: ["post", "user"],
+  props: ["post", "user", "appUrl"],
+  computed: {
+    imageUrl() {
+      return this.appUrl ? this.appUrl + this.post.image : this.post.image;
+    },
+  },
 };
 </script>
 
