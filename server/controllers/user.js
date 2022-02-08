@@ -34,7 +34,10 @@ export const createUser = async (req, res) => {
 	if (!filename || !email || !first_name || !last_name || !username || !password) {
 		return res
 		.status(404)
-		.json({ msg: "Missing input data" });
+		.json({ 
+			msg: "Missing input data",
+			body: req.body
+		 });
 	}
 	// Store data to disk
 	const user = {
@@ -53,7 +56,9 @@ export const createUser = async (req, res) => {
 		.status(500)
 		.json({ msg: "Query to database resulted in an error", error });
 	}
+	res.redirect('http://127.0.0.1:8080');
 	res.status(200).json({ msg: "New user has been created" });
+
 };
 
 export const updateUser = async (req, res) => {

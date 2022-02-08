@@ -33,7 +33,7 @@ export const getPost = async (req, res) => {
 export const getPosts = async (req, res) => {
 	let posts;
 	try {
-		posts = await execQuery(`SELECT * FROM ${POSTS.TABLE_NAME}`);
+		posts = await execQuery(`SELECT * FROM ${POSTS.TABLE_NAME} ORDER BY ${POSTS.ID} DESC`);
 	} catch (error) {
 		return res
 			.status(500)
