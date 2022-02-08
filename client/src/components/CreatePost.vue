@@ -1,6 +1,6 @@
 <template>
 		<div class="row justify-content-center mt-5">
-			<div class="col-3">
+			<div class="col-12 col-md-5 col-xl-3">
 				<form class="container card py-2">
 					<div class="form-group">
 						<h2>Create Post</h2><br>
@@ -12,7 +12,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-5 col-xl-3">
 				<post-card :post="post" :user="user" />
 			</div>
 		</div>	
