@@ -70,25 +70,20 @@ export const createPost = async (req, res) => {
   }
   res.status(200).json({ msg: "New post has been created" });
 };
-  
-};
 
-export const updatePost = async (req, res) => {
+export const updatePost = async (req, res) => {};
 
-};
-
-export const deletePost = async (req, res) => {
-
-};
+export const deletePost = async (req, res) => {};
 
 export const getUser = async (req, res) => {
   let user;
   try {
-    user = await execQuery(`SELECT * FROM user WHERE id = 10000`); 
+    user = await execQuery(`SELECT * FROM user WHERE id = 10000`);
   } catch (error) {
-   return res.status(500).json({ msg: "User query to database resulted in an error" });
+    return res
+      .status(500)
+      .json({ msg: "User query to database resulted in an error" });
   }
 
   res.status(200).json(user);
 };
-
