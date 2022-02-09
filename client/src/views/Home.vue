@@ -7,7 +7,7 @@
 
 <script>
 import TheHeader from "@/components/TheHeader.vue";
-import PostsList from "../components/PostsList.vue";
+import PostsList from "@/components/PostsList.vue";
 
 export default {
   components: {
