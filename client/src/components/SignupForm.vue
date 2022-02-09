@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form class="container card py-2 my-5" action="http://localhost:3000/user/" method="post" enctype="multipart/form-data">
+		<form class="container card py-2 my-5 shadow" action="http://localhost:3000/user/" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<h2 class="text-center">Signup</h2>
 				<img id="profilepic" class="rounded-circle mx-auto d-block my-3" :src="image" alt="">
@@ -77,7 +77,7 @@
 	export default {
 		data() {
 			return {
-				image: 'https://images.unsplash.com/photo-1643255083197-18721220670e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
+				image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80',
 				username: 'username',
 			}
 		},

@@ -2,7 +2,7 @@
 	<div class="row justify-content-center mt-5">
 		<div class="col-3">
 			<form
-				class="container card py-2"
+				class="container card shadow py-2"
 				enctype="multipart/form-data"
 				action="http://localhost:3000/posts"
 				method="POST"
