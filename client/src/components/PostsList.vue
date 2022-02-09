@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ul class="ps-0 col-5 mx-auto">
+    <ul class="ps-0 col-10 col-lg-5 mx-auto">
       <li v-for="post in posts" :key="post.id">
         <post-card appUrl="http://localhost:3000/" :post="post" :user="user">
           <comments/>
