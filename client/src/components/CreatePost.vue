@@ -1,6 +1,6 @@
 <template>
 	<div class="row justify-content-center mt-5">
-		<div class="col-3">
+		<div class="col-7 col-lg-3 mb-4">
 			<form
 				class="container card shadow py-2"
 				enctype="multipart/form-data"
@@ -37,7 +37,7 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-3">
+		<div class="col-7 col-lg-3 mb-4">
 			<post-card :post="post" :user="user" />
 		</div>
 	</div>
