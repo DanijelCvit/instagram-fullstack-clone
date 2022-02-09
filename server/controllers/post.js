@@ -74,7 +74,7 @@ export const createPost = async (req, res) => {
       .json({ msg: "Query to database resulted in an error" });
   }
   // redirect to the homepage
-  res.redirect(200, `http://localhost:8080/`);
+  res.redirect(200, `http://127.0.0.1:8080/`);
 
 };
 
