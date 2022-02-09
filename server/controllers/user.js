@@ -46,7 +46,7 @@ export const createUser = async (req, res) => {
 		last_name,
 		username,
 		password,
-		image: `${process.env.APP_URL}/${filename}`,
+		image: filename,
 	};
 	const query = `INSERT INTO ${USERS.TABLE_NAME} SET ?`;
 	try {

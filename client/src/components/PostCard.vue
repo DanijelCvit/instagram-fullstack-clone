@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card shadow">
     <div class="d-flex align-items-center p-1">
       <img
         id="avatar"
