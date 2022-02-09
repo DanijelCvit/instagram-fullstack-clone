@@ -16,7 +16,7 @@
     </div>
     <div id="text-body" class="card-body">
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ user.name }}</span>
+        <span class="fw-bold pe-1">{{ user.name }}</span>{{ post.description }}
       </p>
     </div>
     <slot></slot>
