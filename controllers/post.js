@@ -7,11 +7,11 @@ import path from "path";
 
 // Make a database connection
 const connection = mysql.createConnection({
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-	user: process.env.DB_USER,
-	password: process.env.DB_PASS,
-	database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 // Convert query function with callback into a Promise
@@ -28,8 +28,7 @@ export const getPost = async (req, res) => {
     return res.status(404).json({ msg: `Error: no post with slug: ${id}` });
   }
 
-
-	res.status(200).json(post);
+  res.status(200).json(post);
 };
 
 // This function now returns all the posts in the database
@@ -45,8 +44,7 @@ export const getPosts = async (req, res) => {
       .json({ msg: "Query to database resulted in an error" });
   }
 
-
-	res.status(200).json(posts);
+  res.status(200).json(posts);
 };
 
 export const createPost = async (req, res) => {
@@ -74,8 +72,7 @@ export const createPost = async (req, res) => {
       .json({ msg: "Query to database resulted in an error" });
   }
   // redirect to the homepage
-  res.redirect('http://127.0.0.1:8080');
-
+  res.redirect("/");
 };
 
 export const updatePost = async (req, res) => {};

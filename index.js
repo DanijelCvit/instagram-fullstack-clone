@@ -11,11 +11,8 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use(express.static("public"));
 app.use(express.static("public/images"));
-
-app.get("/", (req, res) => {
-  res.send("Hello from the server");
-});
 
 app.use("/posts", postsRoutes);
 app.use("/user", userRoutes);
