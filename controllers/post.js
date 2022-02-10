@@ -82,7 +82,6 @@ export const deletePost = async (req, res) => {
 
   // TODO: add user validation
   // const { user_id } = req.body;
-  // Check if user is allowed to delete this post
 
   const imageQuery = `SELECT ${POSTS.IMAGE} FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
   const deleteQuery = `DELETE FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
