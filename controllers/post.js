@@ -1,21 +1,8 @@
-import mysql from "mysql";
-import util from "util";
 import { POSTS } from "../constants.js";
 import createSlug from "../utils/utils.js";
 import fsPromises from "fs/promises";
 import path from "path";
-
-// Make a database connection
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
-
-// Convert query function with callback into a Promise
-const execQuery = util.promisify(connection.query.bind(connection));
+import execQuery from "../connection.js";
 
 export const getPost = async (req, res) => {
   const { slug } = req.params;
