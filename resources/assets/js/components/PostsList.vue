@@ -10,6 +10,7 @@
         </post-card>
       </li>
     </ul>
+    <delete-modal />
   </div>
 </template>
 
@@ -17,11 +18,13 @@
 import PostCard from "@/components/PostCard.vue";
 import Comments from "./Comments.vue";
 import MenuItem from "./MenuItem.vue";
+import DeleteModal from "./DeleteModal.vue";
 export default {
   components: {
     PostCard,
     Comments,
     MenuItem,
+    DeleteModal,
   },
   data() {
     return {
