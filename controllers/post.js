@@ -68,29 +68,29 @@ export const updatePost = async (req, res) => {
   const { user_id, description } = req.body;
   const { slug } = req.params;
 
-  console.log(req.file);
-
   // TODO: add user validation
   // const { user_id } = req.body;
 
   // Check if input is valid
-  if (!filename || !user_id || !description) {
+  if (!user_id || !description) {
     return res.status(404).json({ msg: "Missing input data" });
   }
 
   const post = {
     description,
-    image: filename,
   };
 
   const query = `UPDATE ${POSTS.TABLE_NAME} SET ? WHERE slug = ?`;
-  // const imageQuery = `SELECT ${POSTS.IMAGE} FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
+  const imageQuery = `SELECT ${POSTS.IMAGE} FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
 
   try {
-    // const [{ image }] = await execQuery(imageQuery, slug);
-    await execQuery(query, [post, slug]);
+    if (filename) {
+      post.image = filename;
+      const [{ image }] = await execQuery(imageQuery, slug);
+      await fsPromises.unlink(path.resolve(`public/images/${image}`));
+    }
 
-    // await fsPromises.unlink(path.resolve(`public/images/${image}`));
+    await execQuery(query, [post, slug]);
   } catch (error) {
     return res
       .status(500)
