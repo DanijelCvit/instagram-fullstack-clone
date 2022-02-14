@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <a
+    <button
       class="btn"
       href="#"
       role="button"
@@ -18,16 +18,26 @@
         <path d="M0 0h24v24H0V0z" fill="none" />
         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
       </svg>
-    </a>
+    </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">Edit</a></li>
-      <li><a class="dropdown-item" href="#">Delete</a></li>
+      <li>
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#editModal"
+          class="dropdown-item"
+          href="#"
+          >Edit</a
+        >
+      </li>
+      <li>
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#deleteModal"
+          class="dropdown-item"
+          href="#"
+          >Delete</a
+        >
+      </li>
     </ul>
   </div>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style scoped></style>
