@@ -1,10 +1,10 @@
 <template>
 	<div class="container mt-5">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-5 col-lg-3 justify-content-center d-flex align-items-center flex-wrap mb-3">
-				<img :src="imageUrl" alt="" class="shadow-lg profile-pic rounded-circle mx-auto">
+		<div class="shadow row justify-content-center bg-white rounded py-3">
+			<div class="col-12 col-md-6 col-lg-6 justify-content-center d-flex align-items-center flex-wrap mb-3">
+				<img :src="imageUrl" alt="" class="profile-pic rounded-circle mx-auto">
 			</div>
-			<div class="col-8 col-md-5 col-lg-3 text-center">
+			<div class="col-8 col-md-6 col-lg-6 text-center">
 				<p class="h3">@{{user.username}}</p>
 				<div class="row justify-content-center">
 					<span class="col-4">Posts:<br>{{user.posts}}</span>
@@ -13,7 +13,7 @@
 				</div>
 				<p class="h5 mt-3">{{user.first_name}} {{user.last_name}}</p>
 				<p>{{user.email}}</p>
-				<button class="btn btn-light">Edit Profile</button>
+				<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
 				
 				
 			</div>
@@ -24,41 +24,48 @@
 <script>
 	export default {
 		data() {
-	    return {
-	      user: {
-	      	id: "",
-	        email: "",
-	        first_name: "",
-	        last_name: "",
-	        username: "",
-	        password: "",
-	        image: "",
-	        posts: "0",
-	        followers: "0",
-	        following: "0",
-	      },
-	      appUrl: "http://localhost:3000/",
-	    };
-	  },
-	  async mounted() {
-	    try {
-	      const res = await fetch("http://localhost:3000/user/10000");
-	      const user = await res.json();
-	      this.user = user[0];
-	      this.user.password = "";
-	      this.user.posts = 0;
-	      this.user.followers = 0;
-	      this.user.following = 0;
-	      // TODO dynamically grab post, followers, and following COUNT
-	    } catch (error) {
-	      console.log("Something went wrong", error);
-	    }
-	  },
-	  computed: {
-	    imageUrl() {
-	      return this.appUrl ? this.appUrl + this.user.image : this.user.image;
-	    },
-	  },
+			return {
+			  	user: {
+					id: "",
+					email: "",
+					first_name: "",
+					last_name: "",
+					username: "",
+					password: "",
+					image: "",
+					posts: "0",
+					followers: "0",
+					following: "0",
+				},
+				appUrl: "http://localhost:3000/",
+			};
+		},
+		async mounted() {
+			try {
+			  const res = await fetch("http://localhost:3000/user/10000");
+			  const user = await res.json();
+			  this.user = user[0];
+			  this.user.password = "";
+			  this.user.posts = 0;
+			  this.user.followers = 0;
+			  this.user.following = 0;
+			  // TODO dynamically grab post, followers, and following COUNT
+			} catch (error) {
+			  console.log("Something went wrong", error);
+			}
+		},
+		props: ['swapComponent'],
+		// methods: {
+		// 	swapComponent: function(component) {
+		// 		this.dynamicComponent = component;
+
+		// 	}
+		// },
+		computed: {
+			imageUrl() {
+				return this.appUrl ? this.appUrl + this.user.image : this.user.image;
+			},
+		},
 	}
 </script>
 
@@ -67,6 +74,6 @@
 		aspect-ratio: 1/1;
 		height: 200px;
 		width: 200px;
-		object-fit: cover;
+		object-fit: cover;	
 	};
 </style>

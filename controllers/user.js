@@ -63,8 +63,11 @@ export const updateUser = async (req, res) => {
     last_name,
     username,
     password,
-    image: `${process.env.APP_URL}/${filename}`,
+    
   };
+  if (filename) {
+    user.image = filename
+  }
   const query = `UPDATE ${USERS.TABLE_NAME} SET ? WHERE ${USERS.ID} = ${id}`;
   try {
     await execQuery(query, user);
