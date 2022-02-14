@@ -60,7 +60,7 @@ export default {
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
       post: {
-        image: "placeholder.png",
+        image: "placeholder.jpg",
         description: "Description",
       },
     };

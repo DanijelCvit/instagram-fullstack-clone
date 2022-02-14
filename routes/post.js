@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", getPosts);
 router.get("/:slug", getPost);
 router.post("/", upload.single("uploaded_file"), createPost);
-router.patch("/:id", updatePost);
+router.patch("/:slug", upload.single("uploaded_file"), updatePost);
 router.delete("/:slug", deletePost);
 
 export default router;

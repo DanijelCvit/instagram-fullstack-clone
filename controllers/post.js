@@ -23,9 +23,10 @@ export const getPosts = async (req, res) => {
   let posts;
   try {
     posts = await execQuery(
-      `SELECT * FROM ${POSTS.TABLE_NAME} ORDER BY created_at DESC`
+      `SELECT * FROM ${POSTS.TABLE_NAME} ORDER BY updated_at DESC`
     );
   } catch (error) {
+    console.log(error);
     return res
       .status(500)
       .json({ msg: "Query to database resulted in an error" });
@@ -62,7 +63,42 @@ export const createPost = async (req, res) => {
   res.redirect("/");
 };
 
-export const updatePost = async (req, res) => {};
+export const updatePost = async (req, res) => {
+  const filename = req.file?.filename;
+  const { user_id, description } = req.body;
+  const { slug } = req.params;
+
+  console.log(req.file);
+
+  // TODO: add user validation
+  // const { user_id } = req.body;
+
+  // Check if input is valid
+  if (!filename || !user_id || !description) {
+    return res.status(404).json({ msg: "Missing input data" });
+  }
+
+  const post = {
+    description,
+    image: filename,
+  };
+
+  const query = `UPDATE ${POSTS.TABLE_NAME} SET ? WHERE slug = ?`;
+  // const imageQuery = `SELECT ${POSTS.IMAGE} FROM ${POSTS.TABLE_NAME} WHERE slug = ?`;
+
+  try {
+    // const [{ image }] = await execQuery(imageQuery, slug);
+    await execQuery(query, [post, slug]);
+
+    // await fsPromises.unlink(path.resolve(`public/images/${image}`));
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: "Query to database resulted in an error" });
+  }
+
+  res.status(200).json({ msg: "Post has been updated" });
+};
 
 export const deletePost = async (req, res) => {
   const { slug } = req.params;

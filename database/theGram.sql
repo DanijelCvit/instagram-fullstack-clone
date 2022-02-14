@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< Updated upstream
 -- Generation Time: Feb 08, 2022 at 05:22 PM
+=======
+-- Generation Time: Feb 14, 2022 at 11:53 AM
+>>>>>>> Stashed changes
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -49,7 +53,7 @@ CREATE TABLE `posts` (
   `description` varchar(240) DEFAULT NULL,
   `slug` varchar(10) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,11 +61,20 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `image`, `description`, `slug`, `created_at`, `updated_at`) VALUES
+<<<<<<< Updated upstream
 (10037, 10000, 'uploaded_file-1644334185489-934488068istockphoto-1337484588-612x612.jpg', '\"Hello Kitty\"', 'GspWYAaFLs', '2022-02-08 16:29:45', '2022-02-08 16:29:45'),
 (10038, 10000, 'uploaded_file-1644335292941-391980892istockphoto-1220248041-612x612.jpg', 'mi', 'jYDtSmGMtD', '2022-02-08 16:48:12', '2022-02-08 16:48:12'),
 (10039, 10000, 'uploaded_file-1644335356949-239771001istockphoto-1159651037-612x612.jpg', 'dd', 'nkjUUvvzgY', '2022-02-08 16:49:16', '2022-02-08 16:49:16'),
 (10040, 10000, 'uploaded_file-1644336514933-314855902istockphoto-1220248041-612x612.jpg', 'bbbbbb', 'RuhQRimJQf', '2022-02-08 17:08:34', '2022-02-08 17:08:34'),
 (10041, 10000, 'uploaded_file-1644336894072-757362851istockphoto-1071204696-612x612.jpg', 'cat', 'wacHOZTBTJ', '2022-02-08 17:14:54', '2022-02-08 17:14:54');
+=======
+(10037, 10000, 'uploaded_file-1644835923319-299519349istockphoto-1337484588-612x612.jpg', '\"Updated text\"', 'GspWYAaFLs', '2022-02-08 16:29:45', '2022-02-14 11:52:03'),
+(10038, 10000, 'uploaded_file-1644335292941-391980892istockphoto-1220248041-612x612.jpg', 'mi', 'jYDtSmGMtD', '2022-02-08 16:48:12', '2022-02-08 16:48:12'),
+(10039, 10000, 'uploaded_file-1644335356949-239771001istockphoto-1159651037-612x612.jpg', 'dd', 'nkjUUvvzgY', '2022-02-08 16:49:16', '2022-02-08 16:49:16'),
+(10040, 10000, 'uploaded_file-1644336514933-314855902istockphoto-1220248041-612x612.jpg', 'bbbbbb', 'RuhQRimJQf', '2022-02-08 17:08:34', '2022-02-08 17:08:34'),
+(10041, 10000, 'uploaded_file-1644336894072-757362851istockphoto-1071204696-612x612.jpg', 'cat', 'wacHOZTBTJ', '2022-02-08 17:14:54', '2022-02-08 17:14:54'),
+(10042, 10000, 'uploaded_file-1644835079803-507019703istockphoto-1256908153-612x612.jpg', '\"Hello Kitty\"', 'jIUjvWBbFP', '2022-02-14 11:37:59', '2022-02-14 11:37:59');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -128,7 +141,11 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
+<<<<<<< Updated upstream
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10042;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10043;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `users`

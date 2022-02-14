@@ -3,6 +3,9 @@
     <ul class="ps-0 col-10 col-lg-5 mx-auto">
       <li v-for="post in posts" :key="post.id">
         <post-card :post="post" :user="user">
+          <template v-slot:menu>
+            <menu-item />
+          </template>
           <comments />
         </post-card>
       </li>
@@ -13,10 +16,12 @@
 <script>
 import PostCard from "@/components/PostCard.vue";
 import Comments from "./Comments.vue";
+import MenuItem from "./MenuItem.vue";
 export default {
   components: {
     PostCard,
     Comments,
+    MenuItem,
   },
   data() {
     return {
@@ -30,7 +35,7 @@ export default {
   },
   async mounted() {
     try {
-      const res = await fetch("/posts/");
+      const res = await fetch("/posts");
       const posts = await res.json();
       this.posts = posts;
     } catch (error) {
