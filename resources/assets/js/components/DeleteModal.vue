@@ -1,7 +1,7 @@
 <template>
   <div
     class="modal fade"
-    id="deleteModal"
+    :id="`deleteModal${post.slug}`"
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
@@ -11,7 +11,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
           <button
             type="button"
             class="btn-close"
@@ -19,17 +19,22 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">...</div>
+        <div class="modal-body">Are you sure you want to delete this post?</div>
         <div class="modal-footer">
           <button
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Close
+            Cancel
           </button>
-          <button data-bs-dismiss="modal" type="button" class="btn btn-primary">
-            Understood
+          <button
+            @click="deletePost"
+            data-bs-dismiss="modal"
+            type="button"
+            class="btn btn-danger"
+          >
+            Delete
           </button>
         </div>
       </div>
@@ -39,23 +44,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      open: false,
-    };
+  props: ["post"],
+  methods: {
+    deletePost() {
+      console.log(this.post);
+
+      fetch(`/posts/${this.post.slug}`, {
+        method: "DELETE",
+      });
+
+      this.$emit("onDelete", this.post);
+    },
   },
 };
 </script>
-
-<style scoped>
-.modal {
-  /* display: flex;
-  position: fixed;
-  z-index: 999;
-  top: 0%;
-  left: 50%;
-  width: 100vw;
-  margin-left: -50vw; */
-  /* background-color: rgba(0, 0, 0, 0.5); */
-}
-</style>

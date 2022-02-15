@@ -18,6 +18,7 @@
       <span class="ps-2">{{ post.likes }}</span>
     </div>
     <div id="text-body" class="card-body">
+      <p>Posted {{ datetime }}</p>
       <p class="card-text">
         <span class="fw-bold pe-1">{{ user.name }}</span
         >{{ post.description }}
@@ -28,8 +29,15 @@
 </template>
 
 <script>
+import diffForHumans from "@/utils.js";
+
 export default {
   props: ["post", "user"],
+  computed: {
+    datetime() {
+      return diffForHumans(this.post.updated_at);
+    },
+  },
 };
 </script>
 

@@ -23,7 +23,7 @@
       <li>
         <a
           data-bs-toggle="modal"
-          data-bs-target="#editModal"
+          :data-bs-target="`#editModal${post.slug}`"
           class="dropdown-item"
           href="#"
           >Edit</a
@@ -32,7 +32,7 @@
       <li>
         <a
           data-bs-toggle="modal"
-          data-bs-target="#deleteModal"
+          :data-bs-target="`#deleteModal${post.slug}`"
           class="dropdown-item"
           href="#"
           >Delete</a
@@ -41,3 +41,11 @@
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["post"],
+};
+</script>
+
+<style lang="scss" scoped></style>
