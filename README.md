@@ -49,10 +49,10 @@ So what should be built? Below is a collection of user stories you can choose fr
 > these are necessary for basic usability
 
 - [ ] users should be able to create, update, delete an account
-- [ ] users should be able to create posts
-- [ ] users should be able to update posts
-- [ ] users should be able to delete posts
-- [ ] user should be able to view other peoples posts
+- [x] users should be able to create posts
+- [x] users should be able to update posts
+- [x] users should be able to delete posts
+- [x] user should be able to view other peoples posts
 - [ ] users should be able to add comments and likes
 - [ ] user should be able to search based on tags, username
 
