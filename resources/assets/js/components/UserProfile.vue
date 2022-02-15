@@ -77,13 +77,14 @@
 			PostsGrid,
 		}
 	}
+
 </script>
 
 <style>
-	.profile-pic {
-		aspect-ratio: 1/1;
-		height: 200px;
-		width: 200px;
-		object-fit: cover;	
-	};
+.profile-pic {
+  aspect-ratio: 1/1;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
 </style>

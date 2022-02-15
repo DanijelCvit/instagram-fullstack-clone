@@ -1,7 +1,7 @@
 <template>
   <div
     class="modal fade"
-    id="editModal"
+    :id="`editModal${post.slug}`"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -41,9 +41,8 @@
             <textarea
               class="form-control my-3"
               name="description"
-              id="Description"
-              placeholder="Description"
-              @keyup="updateDescription"
+              placeholder=""
+              v-model="tempPost.description"
             ></textarea>
           </form>
         </div>
@@ -55,7 +54,14 @@
           >
             Cancel
           </button>
-          <button type="button" class="btn btn-primary">Update</button>
+          <button
+            data-bs-dismiss="modal"
+            @click="submitEdit"
+            type="button"
+            class="btn btn-primary"
+          >
+            Update
+          </button>
         </div>
       </div>
     </div>
@@ -75,18 +81,17 @@ export default {
         avatar:
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
+      tempPost: { ...this.post },
+      fileInput: null,
     };
   },
 
   methods: {
-    updateDescription(e) {
-      this.post.description = e.target.value;
-    },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
-      console.log(files[0]);
+      this.fileInput = files[0];
     },
     createImage(file) {
       const reader = new FileReader();
@@ -95,6 +100,27 @@ export default {
         this.post.image = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+    submitEdit() {
+      const formData = new FormData();
+      for (const key in this.tempPost) {
+        formData.append(key, this.tempPost[key]);
+      }
+      if (this.fileInput) {
+        formData.append("uploaded_file", this.fileInput, ".jpg");
+      }
+
+      const requestOptions = {
+        method: "PATCH",
+        body: formData,
+      };
+
+      fetch(`/posts/${this.post.slug}`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+
+      this.$emit("onEdit", this.tempPost);
     },
   },
 };

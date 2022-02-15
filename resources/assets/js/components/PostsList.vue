@@ -4,14 +4,14 @@
       <li v-for="post in posts" :key="post.id">
         <post-card :post="post" :user="user">
           <template v-slot:menu>
-            <menu-item />
+            <menu-item :post="post" />
+            <delete-modal :post="post" @onDelete="deletePost($event)" />
+            <edit-modal :post="post" @onEdit="updatePosts($event)" />
           </template>
           <comments />
         </post-card>
       </li>
     </ul>
-    <delete-modal />
-    <edit-modal :post="post" />
   </div>
 </template>
 
@@ -37,11 +37,19 @@ export default {
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
       posts: [],
-      post: {
-        image: "/placeholder.png",
-        description: "Description",
-      },
     };
+  },
+  methods: {
+    updatePosts(updatedPost) {
+      const newPosts = this.posts.map((post) =>
+        post.id === updatedPost.id ? updatedPost : post
+      );
+      this.posts = newPosts;
+    },
+    deletePost(postToDelete) {
+      const newPosts = this.posts.filter((post) => post.id !== postToDelete.id);
+      this.posts = newPosts;
+    },
   },
   async mounted() {
     try {
