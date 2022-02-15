@@ -4,13 +4,14 @@
       <div class="d-flex align-items-center">
         <img
           id="avatar"
-          :src="user.avatar"
+          :src="post.avatar"
           class="card-img-top rounded-circle p-1"
           alt=""
         />
-        <h5 class="card-title ps-2">{{ user.name }}</h5>
+        <h5 class="card-title ps-2">{{ post.username }}</h5>
       </div>
       <slot name="menu"></slot>
+
     </div>
     <img :src="post.image" class="" alt="" />
     <div class="card-body">
@@ -19,7 +20,7 @@
     </div>
     <div id="text-body" class="card-body">
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ user.name }}</span
+        <span class="fw-bold pe-1">{{ post.username }}</span
         >{{ post.description }}
       </p>
     </div>
@@ -36,6 +37,8 @@ export default {
 <style scoped>
 #avatar {
   max-width: 35px;
+  aspect-ratio: 1/1;
+  object-fit: cover;  
 }
 
 .btn-outline-primary:hover {
@@ -46,6 +49,11 @@ export default {
 .card-title {
   margin: 0;
   font-size: 0.8rem;
+}
+
+.card:hover {
+  //box-shadow: 0px 0px 30px black !important;
+  transform: scale(1.01,1.01);
 }
 
 .card-body {

@@ -1,4 +1,5 @@
 import { POSTS } from "../constants.js";
+import { USERS } from "../constants.js";
 import createSlug from "../utils/utils.js";
 import fsPromises from "fs/promises";
 import path from "path";
@@ -23,8 +24,15 @@ export const getPosts = async (req, res) => {
   let posts;
   try {
     posts = await execQuery(
-      `SELECT * FROM ${POSTS.TABLE_NAME} ORDER BY updated_at DESC`
+
+      `SELECT ${POSTS.TABLE_NAME}.*, ${USERS.TABLE_NAME}.${USERS.ID}, ${USERS.TABLE_NAME}.${USERS.USERNAME}, ${USERS.TABLE_NAME}.${USERS.IMAGE} AS avatar
+        FROM ${USERS.TABLE_NAME} 
+        INNER JOIN ${POSTS.TABLE_NAME} 
+        ON ${POSTS.TABLE_NAME}.${POSTS.USER_ID} = ${USERS.TABLE_NAME}.${USERS.ID} 
+        ORDER BY created_at DESC`
+
     );
+    
   } catch (error) {
     console.log(error);
     return res
