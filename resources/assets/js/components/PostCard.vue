@@ -1,13 +1,17 @@
 <template>
   <div class="card shadow">
-    <div class="d-flex align-items-center p-1">
-      <img
-        id="avatar"
-        :src="post.avatar"
-        class="card-img-top rounded-circle p-1"
-        alt=""
-      />
-      <h5 class="card-title ps-2">{{ post.username }}</h5>
+    <div class="d-flex align-items-center justify-content-between p-1">
+      <div class="d-flex align-items-center">
+        <img
+          id="avatar"
+          :src="post.avatar"
+          class="card-img-top rounded-circle p-1"
+          alt=""
+        />
+        <h5 class="card-title ps-2">{{ post.username }}</h5>
+      </div>
+      <slot name="menu"></slot>
+
     </div>
     <img :src="post.image" class="" alt="" />
     <div class="card-body">

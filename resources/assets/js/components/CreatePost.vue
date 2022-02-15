@@ -58,7 +58,7 @@ export default {
         
       },
       post: {
-        image: "placeholder.png",
+        image: "placeholder.jpg",
         description: "Description",
         username: "danijel",
         avatar:

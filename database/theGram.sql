@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2022 at 01:58 PM
+<<<<<<< Updated upstream
+-- Generation Time: Feb 08, 2022 at 05:22 PM
+=======
+-- Generation Time: Feb 14, 2022 at 11:53 AM
+>>>>>>> Stashed changes
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -49,7 +53,7 @@ CREATE TABLE `posts` (
   `description` varchar(240) DEFAULT NULL,
   `slug` varchar(10) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,12 +61,20 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `image`, `description`, `slug`, `created_at`, `updated_at`) VALUES
-(10031, 10000, 'http://localhost:3000/uploaded_file-1644324733148-58574326istockphoto-499571753-612x612.jpg', 'cat 1', 'JlhzGcJOsj', '2022-02-08 13:52:13', '2022-02-08 13:52:13'),
-(10032, 10000, 'http://localhost:3000/uploaded_file-1644324746882-930522394istockphoto-858688716-612x612.jpg', 'cat 2', 'CJcdsOinDl', '2022-02-08 13:52:26', '2022-02-08 13:52:26'),
-(10033, 10000, 'http://localhost:3000/uploaded_file-1644324756578-207819999istockphoto-977318096-612x612.jpg', 'cat 3', 'lfxMYWCGwf', '2022-02-08 13:52:36', '2022-02-08 13:52:36'),
-(10034, 10000, 'http://localhost:3000/uploaded_file-1644324770578-281973867istockphoto-1071204696-612x612.jpg', 'cat 4', 'tmrwegnowO', '2022-02-08 13:52:50', '2022-02-08 13:52:50'),
-(10035, 10000, 'http://localhost:3000/uploaded_file-1644324829821-159998480istockphoto-1220248041-612x612.jpg', 'cat 5', 'pLMkCdpBOL', '2022-02-08 13:53:49', '2022-02-08 13:53:49'),
-(10036, 10000, 'http://localhost:3000/uploaded_file-1644324918697-972781390istockphoto-1337484588-612x612.jpg', 'cat 6', 'iQeQ-vNNRv', '2022-02-08 13:55:18', '2022-02-08 13:55:18');
+<<<<<<< Updated upstream
+(10037, 10000, 'uploaded_file-1644334185489-934488068istockphoto-1337484588-612x612.jpg', '\"Hello Kitty\"', 'GspWYAaFLs', '2022-02-08 16:29:45', '2022-02-08 16:29:45'),
+(10038, 10000, 'uploaded_file-1644335292941-391980892istockphoto-1220248041-612x612.jpg', 'mi', 'jYDtSmGMtD', '2022-02-08 16:48:12', '2022-02-08 16:48:12'),
+(10039, 10000, 'uploaded_file-1644335356949-239771001istockphoto-1159651037-612x612.jpg', 'dd', 'nkjUUvvzgY', '2022-02-08 16:49:16', '2022-02-08 16:49:16'),
+(10040, 10000, 'uploaded_file-1644336514933-314855902istockphoto-1220248041-612x612.jpg', 'bbbbbb', 'RuhQRimJQf', '2022-02-08 17:08:34', '2022-02-08 17:08:34'),
+(10041, 10000, 'uploaded_file-1644336894072-757362851istockphoto-1071204696-612x612.jpg', 'cat', 'wacHOZTBTJ', '2022-02-08 17:14:54', '2022-02-08 17:14:54');
+=======
+(10037, 10000, 'uploaded_file-1644835923319-299519349istockphoto-1337484588-612x612.jpg', '\"Updated text\"', 'GspWYAaFLs', '2022-02-08 16:29:45', '2022-02-14 11:52:03'),
+(10038, 10000, 'uploaded_file-1644335292941-391980892istockphoto-1220248041-612x612.jpg', 'mi', 'jYDtSmGMtD', '2022-02-08 16:48:12', '2022-02-08 16:48:12'),
+(10039, 10000, 'uploaded_file-1644335356949-239771001istockphoto-1159651037-612x612.jpg', 'dd', 'nkjUUvvzgY', '2022-02-08 16:49:16', '2022-02-08 16:49:16'),
+(10040, 10000, 'uploaded_file-1644336514933-314855902istockphoto-1220248041-612x612.jpg', 'bbbbbb', 'RuhQRimJQf', '2022-02-08 17:08:34', '2022-02-08 17:08:34'),
+(10041, 10000, 'uploaded_file-1644336894072-757362851istockphoto-1071204696-612x612.jpg', 'cat', 'wacHOZTBTJ', '2022-02-08 17:14:54', '2022-02-08 17:14:54'),
+(10042, 10000, 'uploaded_file-1644835079803-507019703istockphoto-1256908153-612x612.jpg', '\"Hello Kitty\"', 'jIUjvWBbFP', '2022-02-14 11:37:59', '2022-02-14 11:37:59');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -86,7 +98,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `username`, `password`, `image`) VALUES
 (10000, 'brad.drummer34@yahoo.com', 'Brad', 'Haupt', 'bradhaupt', 'password', 'https://unsplash.com/photos/q11NM0cFFzY'),
-(10001, 'tester@testnet.com', 'Elvis', 'Presley', 'tester', 'password', 'https://unsplash.com/photos/QeVmJxZOv3k');
+(10001, 'tester@testnet.com', 'Elvis', 'Presley', 'tester', 'password', 'https://unsplash.com/photos/QeVmJxZOv3k'),
+(10002, 'james@host.com', 'james', 'brown', 'james', 'aap', 'http://localhost:3000/uploaded_file-1644337083178-641902185istockphoto-499571753-612x612.jpg');
 
 --
 -- Indexes for dumped tables
@@ -128,13 +141,17 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10037;
+<<<<<<< Updated upstream
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10042;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10043;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
 
 --
 -- Constraints for dumped tables
