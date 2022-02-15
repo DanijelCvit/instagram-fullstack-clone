@@ -55,13 +55,14 @@ export default {
     return {
       user: {
         id: 10000,
-        name: "danijel",
-        avatar:
-          "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
+        
       },
       post: {
         image: "placeholder.png",
         description: "Description",
+        username: "danijel",
+        avatar:
+          "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
     };
   },
@@ -84,6 +85,9 @@ export default {
       reader.readAsDataURL(file);
     },
   },
+  async mounted() {
+    
+  }
 };
 </script>
 
