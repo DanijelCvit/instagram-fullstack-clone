@@ -47,8 +47,6 @@ export default {
   props: ["post"],
   methods: {
     deletePost() {
-      console.log(this.post);
-
       fetch(`/posts/${this.post.slug}`, {
         method: "DELETE",
       });

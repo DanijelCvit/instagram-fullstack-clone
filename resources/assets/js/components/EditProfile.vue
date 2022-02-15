@@ -157,7 +157,6 @@ export default {
         body: formData,
       };
 
-      console.log(this.user);
       fetch("/user/10000", requestOptions)
         .then((response) => response.text())
         .then((result) => console.log(result))
