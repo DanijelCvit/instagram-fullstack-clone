@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       user: {
-        name: "danijel",
-        avatar:
+        username: "danijel",
+        image:
           "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
       },
       posts: [],
