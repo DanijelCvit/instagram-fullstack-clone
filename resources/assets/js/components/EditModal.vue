@@ -19,7 +19,7 @@
         </div>
         <div class="modal-body">
           <div class="text-center">
-            <img class="img-fluid" :src="post.image" alt="" />
+            <img class="img-fluid" :src="tempPost.image" alt="" />
           </div>
           <form
             class="p-3"
@@ -97,7 +97,7 @@ export default {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        this.post.image = e.target.result;
+        this.tempPost.image = e.target.result;
       };
       reader.readAsDataURL(file);
     },
