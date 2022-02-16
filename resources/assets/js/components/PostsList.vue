@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <ul class="ps-0 col-10 col-lg-5 mx-auto">
-      <li v-for="post in posts" :key="post.id">
+      <li v-for="post in posts" :key="post.slug">
         <post-card :post="post" :user="user">
           <template v-slot:menu>
             <menu-item :post="post" />
@@ -42,12 +42,14 @@ export default {
   methods: {
     updatePosts(updatedPost) {
       const newPosts = this.posts.map((post) =>
-        post.id === updatedPost.id ? updatedPost : post
+        post.slug === updatedPost.slug ? updatedPost : post
       );
       this.posts = newPosts;
     },
     deletePost(postToDelete) {
-      const newPosts = this.posts.filter((post) => post.id !== postToDelete.id);
+      const newPosts = this.posts.filter(
+        (post) => post.slug !== postToDelete.slug
+      );
       this.posts = newPosts;
     },
   },
@@ -56,6 +58,7 @@ export default {
       const res = await fetch("/posts");
       const posts = await res.json();
       this.posts = posts;
+      console.log(posts);
     } catch (error) {
       console.log("Something went wrong", error);
     }

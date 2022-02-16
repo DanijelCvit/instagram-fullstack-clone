@@ -11,7 +11,6 @@
         <h5 class="card-title ps-2">{{ post.username }}</h5>
       </div>
       <slot name="menu"></slot>
-
     </div>
     <img :src="post.image" class="" alt="" />
     <div class="card-body">
@@ -46,7 +45,7 @@ export default {
 #avatar {
   max-width: 35px;
   aspect-ratio: 1/1;
-  object-fit: cover;  
+  object-fit: cover;
 }
 
 .btn-outline-primary:hover {
@@ -60,8 +59,7 @@ export default {
 }
 
 .card:hover {
-  //box-shadow: 0px 0px 30px black !important;
-  transform: scale(1.01,1.01);
+  transform: scale(1.01, 1.01);
 }
 
 .card-body {

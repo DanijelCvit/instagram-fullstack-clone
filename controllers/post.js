@@ -24,15 +24,12 @@ export const getPosts = async (req, res) => {
   let posts;
   try {
     posts = await execQuery(
-
-      `SELECT ${POSTS.TABLE_NAME}.*, ${USERS.TABLE_NAME}.${USERS.ID}, ${USERS.TABLE_NAME}.${USERS.USERNAME}, ${USERS.TABLE_NAME}.${USERS.IMAGE} AS avatar
+      `SELECT ${POSTS.TABLE_NAME}.*, ${USERS.TABLE_NAME}.${USERS.USERNAME}, ${USERS.TABLE_NAME}.${USERS.IMAGE} AS avatar
         FROM ${USERS.TABLE_NAME} 
         INNER JOIN ${POSTS.TABLE_NAME} 
         ON ${POSTS.TABLE_NAME}.${POSTS.USER_ID} = ${USERS.TABLE_NAME}.${USERS.ID} 
         ORDER BY created_at DESC`
-
     );
-    
   } catch (error) {
     console.log(error);
     return res
