@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <ul class="ps-0 col-10 col-lg-5 mx-auto">
-      <li v-for="post in posts" :key="post.slug">
-        <post-card :post="post" :user="user">
+      <li v-for="post in posts" :key="post.id">
+        <post-card :post="post">
           <template v-slot:menu>
             <menu-item :post="post" />
             <delete-modal :post="post" @onDelete="deletePost($event)" />

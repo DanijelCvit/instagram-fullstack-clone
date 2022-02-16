@@ -38,7 +38,7 @@
       </form>
     </div>
     <div class="col-7 col-lg-3 mb-4">
-      <post-card :post="post" :user="user" />
+      <post-card :post="post" />
     </div>
   </div>
 </template>
@@ -55,7 +55,6 @@ export default {
     return {
       user: {
         id: 10000,
-        
       },
       post: {
         image: "placeholder.jpg",
@@ -85,9 +84,7 @@ export default {
       reader.readAsDataURL(file);
     },
   },
-  async mounted() {
-    
-  }
+  async mounted() {},
 };
 </script>
 

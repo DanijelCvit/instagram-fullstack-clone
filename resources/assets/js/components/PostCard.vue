@@ -32,7 +32,7 @@
 import diffForHumans from "@/utils.js";
 
 export default {
-  props: ["post", "user"],
+  props: ["post"],
   computed: {
     datetime() {
       return diffForHumans(this.post.updated_at);
@@ -57,7 +57,7 @@ export default {
   margin: 0;
   font-size: 0.8rem;
 }
-
+/* 
 .card:hover {
   transform: scale(1.01, 1.01);
 }
@@ -72,5 +72,5 @@ export default {
 
 #text-body {
   padding-top: 0;
-}
+} */
 </style>
