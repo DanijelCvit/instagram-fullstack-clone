@@ -1,80 +1,69 @@
-# Getting Started
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-This repository functions as the basis of the instagram clone project.
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Development
+## Commands
+php artisan serve
 
-### We'll be using the following stack:
+npx mix watch --hot
 
-- VueJS
-- Bootstrap
-- Express
-- MySQL
+## About Laravel
 
-## Installing Dependencies
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-# Structure
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Let's run through the folders:
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-```
-.
-├── client
-│   ├── public
-│   └── src
-├── server
-│   ├── __test__
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── index.js
-│   └── server.js
-└── README.md
-```
+## Learning Laravel
 
-- `client` here is where the front end code will be stored. Inside is a basic vue js project folder structure
-  - `public` this is the folder where the production build will be compiled to
-  - `src` this is where the vue sj development code is stored
-- `server` here is where the back end server code is stored
-  - `controllers` this folder contains all the functions for our router endpoints
-  - `models` here we store our data models which we use to communicate with the mysql database
-  - `routes` here we store the routes for different resources (posts, accounts comments, etc)
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-# Backlog
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
+## Laravel Sponsors
 
-## Must-Haves
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-> these are necessary for basic usability
+### Premium Partners
 
-- [ ] users should be able to create, update, delete an account
-- [x] users should be able to create posts
-- [x] users should be able to update posts
-- [x] users should be able to delete posts
-- [x] user should be able to view other peoples posts
-- [ ] users should be able to add comments and likes
-- [ ] user should be able to search based on tags, username
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-## Nice-to-Haves
+## Contributing
 
-> if time, add more features!
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-- [ ] should be able to follow/unfollow people
-- [ ] get notifications about likes, comments, follows
+## Code of Conduct
 
-## Componets
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-- [ ] TheHeader.vue
-- [ ] PostsList.vue
-- [ ] PostCard.vue
-- [ ] SearchResults.vue
+## Security Vulnerabilities
 
-## Views
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-- [ ] Login page
-- [ ] Home feed
-- [ ] Signup page
-- [ ] Create a post
-- [ ] Account settings page
-- [ ] Profile page
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
