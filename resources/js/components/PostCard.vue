@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <img
           id="avatar"
-          :src="post.avatar"
+          :src="avatar"
           class="card-img-top rounded-circle p-1"
           alt=""
         />
@@ -12,7 +12,7 @@
       </div>
       <slot name="menu"></slot>
     </div>
-    <img :src="post.image" class="" alt="" />
+    <img :src="image" class="" alt="" />
     <div class="card-body">
       <button class="btn p-0"><i class="far fa-heart"></i></button>
       <span class="ps-2">{{ post.likes }}</span>
@@ -33,6 +33,12 @@ import diffForHumans from "@/utils.js";
 
 export default {
   props: ["post"],
+  data(){
+      return {
+          image: "images/" + this.post.image,
+          avatar: "images/" + this.post.avatar
+      }
+  },
   computed: {
     datetime() {
       return diffForHumans(this.post.updated_at);
