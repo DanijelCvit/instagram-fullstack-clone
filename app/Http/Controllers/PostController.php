@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Psy\Util\Str;
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+       return  Post::with('author:username,image')->get(['id', 'user_id', 'image', 'description', 'slug']);
     }
 
     /**
@@ -59,7 +60,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $slug)
@@ -67,7 +68,7 @@ class PostController extends Controller
         $attributes = $request->validate([
            'description' => 'required',
         ]);
-        Post::where('slug', $attributes);
+        Post::where('slug', $slug)->update($attributes);
     }
 
     /**

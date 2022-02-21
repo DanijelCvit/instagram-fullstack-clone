@@ -58,7 +58,6 @@ export default {
       const res = await fetch("/api/posts");
       const posts = await res.json();
       this.posts = posts;
-      console.log(posts);
     } catch (error) {
       console.log("Something went wrong", error);
     }
