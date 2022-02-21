@@ -18,10 +18,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-function getUserPosts()
+function getUserPosts(): array
 {
-    $results = DB::select('select * from users where id = ?', [10000]);
-    return $results;
+    return DB::select('select * from users where id = ?', [10000]);
 }
 
 Route::get("/posts2/", function(){
@@ -29,8 +28,11 @@ Route::get("/posts2/", function(){
 });
 
 Route::get("/posts/", function(){
-    $results =DB::select('select * from users where id = ?', [10000]);
-    return $results;
+    return DB::select('SELECT posts.*, users.username, users.image AS avatar
+        FROM users
+        INNER JOIN posts
+        ON posts.user_id = users.id
+        ORDER BY created_at DESC');
 });
 //Route::get("/:id", getUser());
 //Route::post("/", upload.single("uploaded_file"), createUser);
