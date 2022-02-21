@@ -55,7 +55,7 @@ export default {
   },
   async mounted() {
     try {
-      const res = await fetch("/posts");
+      const res = await fetch("/api/posts");
       const posts = await res.json();
       this.posts = posts;
       console.log(posts);
