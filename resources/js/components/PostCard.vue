@@ -8,7 +8,7 @@
           class="card-img-top rounded-circle p-1"
           alt=""
         />
-        <h5 class="card-title ps-2">{{ post.username }}</h5>
+        <h5 class="card-title ps-2">{{ post.author.username }}</h5>
       </div>
       <slot name="menu"></slot>
     </div>
@@ -18,9 +18,9 @@
       <span class="ps-2">{{ post.likes }}</span>
     </div>
     <div id="text-body" class="card-body">
-      <p>Posted {{ datetime }}</p>
+      <p>Posted {{ post.created_at }}</p>
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ post.username }}</span
+        <span class="fw-bold pe-1">{{ post.author.username }}</span
         >{{ post.description }}
       </p>
     </div>
@@ -29,20 +29,16 @@
 </template>
 
 <script>
-import diffForHumans from "@/utils.js";
 
 export default {
   props: ["post"],
   data(){
       return {
-
+          image:  this.post.image,
+          avatar:  this.post.author.image
       }
   },
-  computed: {
-    datetime() {
-      return diffForHumans(this.post.updated_at);
-    },
-  },
+
 };
 </script>
 
