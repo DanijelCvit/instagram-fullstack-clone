@@ -45,7 +45,8 @@ class PostController extends Controller
         $attributes['user_id'] = 1;//auth()->id();
         $attributes['slug'] = Str::random(10);
         $attributes['image'] = 'storage/' . $request->file('image')->store('images');
-        return Post::create($attributes);
+         Post::create($attributes);
+				return redirect("/");
     }
 
     /**
