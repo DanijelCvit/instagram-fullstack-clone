@@ -17,8 +17,8 @@ class PostFactory extends Factory
         return [
             'user_id'=> User::factory() ,
             'description' => $this->faker->paragraph(),
-            'slug' => $this->faker->slug()
-
+            'slug' => $this->faker->slug(),
+						'image' => $this->faker->image(public_path('images'), 50, 50, null, false)
         ];
     }
 }
