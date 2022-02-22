@@ -38,7 +38,7 @@
       </form>
     </div>
     <div class="col-7 col-lg-3 mb-4">
-      <post-card :post="post" :image="pic"/>
+      <post-card :post="post"/>
     </div>
   </div>
 </template>
@@ -59,8 +59,10 @@ export default {
       post: {
         image: "images/placeholder.jpg",
         description: "Description",
-        username: "username",
-        avatar: "images/placeholder.jpg",
+				author: {
+					username: "username",
+					image: "images/placeholder.jpg",
+				}
       },
     };
   },

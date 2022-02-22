@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <img
           id="avatar"
-          :src="post.avatar"
+          :src="post.author.image"
           class="card-img-top rounded-circle p-1"
           alt=""
         />
@@ -34,8 +34,8 @@ export default {
   props: ["post"],
   data(){
       return {
-          image:  this.post.image,
-          avatar:  this.post.author.image
+          // image:  this.post.image,
+          // avatar:  this.post.author.image
       }
   },
 
