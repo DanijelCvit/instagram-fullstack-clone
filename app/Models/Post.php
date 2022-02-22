@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = [];
-
+  protected $with = ['author:id,username,image', 'comments'];
 
     public function comments(){
       return  $this->hasMany(Comment::class);

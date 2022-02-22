@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -17,68 +16,83 @@ class PostController extends Controller
      */
     public function index()
     {
-       return  Post::with('author:username,image')->get(['id', 'user_id', 'image', 'description', 'slug']);
+        return Post::orderBy('created_at', 'DESC')
+            ->get()
+            ->map(function ($post) {
+                return [
+                    'description' => $post['description'],
+                    'image' => $post['image'],
+                    'created_at' => $post['created_at']->diffForHumans(),
+                    'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]
+                ];
+            })->all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $attributes = $request->validate([
             'description' => 'required',
-
+            'image' => ['required', 'image']
         ]);
 
-        $attributes['user_id'] = 1;
-
-
-
-
         $attributes['user_id'] = 1;//auth()->id();
-        $attributes['slug'] = \Illuminate\Support\Str::random(10);
-//        $attributes['image'] = $request->file('uploaded_file')->store('images');
-//        Post::create(['description' =>]);
-        return  Post::create($attributes);
+        $attributes['slug'] = Str::random(10);
+        $attributes['image'] = 'storage/' . $request->file('image')->store('images');
+        return Post::create($attributes);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $slug
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
-        return $post;
+        $post =  [
+                'description' => $post['description'],
+                'image' => $post['image'],
+                'created_at' => $post['created_at']->diffForHumans(),
+                'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]
+            ];
+
+        return response($post);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $slug
+     * @param \Illuminate\Http\Request $request
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, String $slug)
     {
         $attributes = $request->validate([
-           'description' => 'required',
+            'description' => 'required',
         ]);
-        Post::where('slug', $slug)->update($attributes);
+
+        if($request->file('image')){
+            $attributes['image'] = 'storage/' . $request->file('image')->store('images');
+        }
+
+       return Post::where('slug', $slug)->update($attributes);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $slug
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy(String $slug)
     {
-      return  Post::where('slug', $slug)->delete();
+        return Post::where('slug', $slug)->delete();
     }
 }
