@@ -38,7 +38,7 @@
       </form>
     </div>
     <div class="col-7 col-lg-3 mb-4">
-      <post-card :post="post" />
+      <post-card :post="post" :image="pic"/>
     </div>
   </div>
 </template>
@@ -57,11 +57,10 @@ export default {
         id: 10000,
       },
       post: {
-        image: "placeholder.jpg",
+        image: "images/placeholder.jpg",
         description: "Description",
-        username: "danijel",
-        avatar:
-          "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
+        username: "username",
+        avatar: "images/placeholder.jpg",
       },
     };
   },
