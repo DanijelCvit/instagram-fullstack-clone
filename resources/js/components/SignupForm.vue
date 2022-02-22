@@ -8,64 +8,64 @@
 				<div class="row justify-content-center">
 					<div class="col-12 col-sm-5 col-xl-3">
 						<label for="uploaded_file">Profile Pic</label>
-						<input 
-							type="file" 
-							accept="image/png, image/jpeg" 
-							class="form-control my-3" 
-							id="uploaded_file" 
+						<input
+							type="file"
+							accept="image/png, image/jpeg"
+							class="form-control my-3"
+							id="uploaded_file"
 							name="uploaded_file"
-							@change="onFileChange" 
+							@change="onFileChange"
 							required>
 						<label for="username">Username</label>
 						<div class="input-group flex-nowrap my-3">
 							<span class="input-group-text">@</span>
-							<input 
-								class="form-control" 
+							<input
+								class="form-control"
 								type="text"
-								autocomplete="username" 
+								autocomplete="username"
 								id="username"
-								name="username" 
-								placeholder="Username" 
-								@keyup="updateUsername" 
+								name="username"
+								placeholder="Username"
+								@keyup="updateUsername"
 								required>
-						</div>	
+						</div>
 						<label for="email">Email</label>
-						<input 
-							class="form-control my-3" 
+						<input
+							class="form-control my-3"
 							type="email"
-							id="email" 
+							id="email"
 							name="email"
-							placeholder="user@email.com" 
+							placeholder="user@email.com"
 							required>
 					</div>
 					<div class="col-12 col-sm-5 col-xl-3">
 						<label for="firstName">First Name</label>
-						<input 
-							class="form-control my-3" 
+						<input
+							class="form-control my-3"
 							type="text"
-							id="firstName" 
+							id="firstName"
 							name="first_name"
-							placeholder="First Name" 
+							placeholder="First Name"
 							required>
 						<label for="lastName">Last Name</label>
-						<input 
-							class="form-control my-3" 
+						<input
+							class="form-control my-3"
 							type="text"
-							id="lastName" 
+							id="lastName"
 							name="last_name"
-							placeholder="Last Name" 
+							placeholder="Last Name"
 							required>
 						<label for="password">Password</label>
-						<input 
-							class="form-control my-3" 
-							type="password" 
-							autocomplete="new-password" 
-							id="password" 
+						<input
+							class="form-control my-3"
+							type="password"
+							autocomplete="new-password"
+							id="password"
 							name="password"
-							placeholder="Password" 
+							placeholder="Password"
 							required>
 					</div>
-					
+
 				</div>
 				<button type="submit" class="btn btn-primary my-3 row w-25 mx-auto d-block">Signup</button>
 			</div>
@@ -77,7 +77,7 @@
 	export default {
 		data() {
 			return {
-				image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80',
+				image: 'images/placeholder.jpg',
 				username: 'username',
 			}
 		},
