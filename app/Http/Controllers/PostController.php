@@ -20,6 +20,7 @@ class PostController extends Controller
             ->get()
             ->map(function ($post) {
                 return [
+										'slug' => $post['slug'],
                     'description' => $post['description'],
                     'image' => $post['image'],
                     'created_at' => $post['created_at']->diffForHumans(),
@@ -56,7 +57,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post =  [
-                'description' => $post['description'],
+					'slug' => $post['slug'],
+					'description' => $post['description'],
                 'image' => $post['image'],
                 'created_at' => $post['created_at']->diffForHumans(),
                 'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]

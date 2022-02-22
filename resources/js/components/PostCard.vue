@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <img
           id="avatar"
-          :src="post.avatar"
+          :src="avatar"
           class="card-img-top rounded-circle p-1"
           alt=""
         />

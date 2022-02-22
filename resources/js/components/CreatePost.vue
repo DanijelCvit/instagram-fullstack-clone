@@ -19,7 +19,7 @@
           <label for="Image">Image</label>
           <input
             type="file"
-            name="uploaded_file"
+            name="image"
             accept="image/png, image/jpeg"
             class="form-control my-3"
             id="Image"
