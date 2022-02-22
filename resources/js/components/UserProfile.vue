@@ -14,14 +14,14 @@
 				<p class="h5 mt-3">{{user.first_name}} {{user.last_name}}</p>
 				<p>{{user.email}}</p>
 				<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
-				
-				
+
+
 			</div>
 		</div>
 
 			<!-- Insert Posts Here -->
 			<posts-grid :user="user">
-				
+
 			</posts-grid>
 
 	</div>
@@ -37,19 +37,19 @@
 					email: "",
 					first_name: "",
 					last_name: "",
-					username: "",
+					username: "user-not-found",
 					password: "",
-					image: "",
+					image: "images/placeholder.jpg",
 					postCount: "0",
 					followers: "0",
 					following: "0",
 				},
-				appUrl: "http://localhost:3000/",
+				appUrl: "http://localhost:8000/",
 			};
 		},
 		async mounted() {
 			try {
-			  const res = await fetch("http://localhost:3000/user/10000");
+			  const res = await fetch("http://localhost:8000/user/10000");
 			  const user = await res.json();
 			  this.user = user[0];
 			  //const resUserStats = await fetch("/user");
