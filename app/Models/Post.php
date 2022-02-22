@@ -9,6 +9,9 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+  protected $with = ['author:id,username,image', 'comments'];
+
     public function comments(){
       return  $this->hasMany(Comment::class);
     }
@@ -17,7 +20,10 @@ class Post extends Model
       return  $this->belongsTo(User::class, 'user_id');
     }
 
-
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
 
 }
