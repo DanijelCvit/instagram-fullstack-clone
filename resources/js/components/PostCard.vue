@@ -19,7 +19,7 @@
       <span class="ps-2">{{ post.likes }}</span>
     </div>
     <div id="text-body" class="card-body">
-      <p>Posted {{ post.created_at }}</p>
+      <p v-if="post.created_at">Posted {{ post.created_at }}</p>
       <p class="card-text">
         <span class="fw-bold pe-1">{{ post.author.username }}</span
         >{{ post.description }}
