@@ -90,6 +90,10 @@ export default {
 				.then(response => response.text())
 				.then(result => console.log(result)) // TODO store in vuex
 				.then(function() {
+					vm.form.email = "";
+					vm.form.password = "";
+				})
+				.then(function() {
 					vm.$router.push('/')
 				});
 
