@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 
 
@@ -12,10 +13,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
-    {
+    public function index(): Response
+		{
         return Post::orderBy('created_at', 'DESC')
             ->get()
             ->map(function ($post) {
@@ -32,8 +33,8 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -53,7 +54,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param string $slug
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Post $post)
     {
@@ -71,9 +72,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param string $slug
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, String $slug)
     {
@@ -92,7 +93,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param string $slug
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(String $slug)
     {
