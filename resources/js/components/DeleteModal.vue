@@ -47,7 +47,7 @@ export default {
   props: ["post"],
   methods: {
     deletePost() {
-      fetch(`/posts/${this.post.slug}`, {
+      fetch(`/api/posts/${this.post.slug}`, {
         method: "DELETE",
       });
 

@@ -5,6 +5,7 @@
         <img
           id="avatar"
           :src="post.author.image"
+
           class="card-img-top rounded-circle p-1"
           alt=""
         />
@@ -32,13 +33,6 @@
 
 export default {
   props: ["post"],
-  data(){
-      return {
-          // image:  this.post.image,
-          // avatar:  this.post.author.image
-      }
-  },
-
 };
 </script>
 

@@ -10,7 +10,13 @@
 ## Commands
 php artisan serve
 
-npx mix watch --hot
+npm run hot
+
+---
+
+php artisan migrate:fresh
+
+php artisan db:seed
 
 ## About Laravel
 
