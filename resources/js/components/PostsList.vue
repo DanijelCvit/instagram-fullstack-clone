@@ -21,6 +21,7 @@ import Comments from "./Comments.vue";
 import MenuItem from "./MenuItem.vue";
 import DeleteModal from "./DeleteModal.vue";
 import EditModal from "./EditModal.vue";
+
 export default {
   components: {
     PostCard,
@@ -56,8 +57,7 @@ export default {
   async mounted() {
     try {
       const res = await fetch("/api/posts");
-      const posts = await res.json();
-      this.posts = posts;
+			this.posts = await res.json();
     } catch (error) {
       console.log("Something went wrong", error);
     }
