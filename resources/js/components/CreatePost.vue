@@ -4,7 +4,7 @@
       <form
         class="container card shadow py-2"
         enctype="multipart/form-data"
-        action="/posts"
+        action="/api/posts"
         method="POST"
       >
         <div class="form-group">
@@ -19,7 +19,7 @@
           <label for="Image">Image</label>
           <input
             type="file"
-            name="uploaded_file"
+            name="image"
             accept="image/png, image/jpeg"
             class="form-control my-3"
             id="Image"
@@ -57,11 +57,11 @@ export default {
         id: 10000,
       },
       post: {
-        image: "images/placeholder.jpg",
+        image: "storage/images/placeholder.jpg",
         description: "Description",
 				author: {
 					username: "username",
-					image: "images/placeholder.jpg",
+					image: "storage/images/placeholder.jpg",
 				}
       },
     };

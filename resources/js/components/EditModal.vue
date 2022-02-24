@@ -24,21 +24,20 @@
           <form
             class="p-3"
             enctype="multipart/form-data"
-            action="/posts"
-            method="POST"
           >
-            <input type="hidden" name="user_id" class="form-control my-3" />
+<!--						<input type="hidden" name="user_id" class="form-control my-3" />-->
             <label for="Image">Select image</label>
             <input
               type="file"
-              name="uploaded_file"
+              name="image"
               accept="image/png, image/jpeg"
               class="form-control my-3"
               id="Image"
               @change="onFileChange"
             />
-            <label for="Description">Description</label>
+            <label for="description">Description</label>
             <textarea
+							id="description"
               class="form-control my-3"
               name="description"
               placeholder=""
@@ -107,15 +106,17 @@ export default {
         formData.append(key, this.tempPost[key]);
       }
       if (this.fileInput) {
-        formData.append("uploaded_file", this.fileInput, ".jpg");
+        formData.append("image", this.fileInput, ".jpg");
       }
 
-      const requestOptions = {
-        method: "PATCH",
+			formData.append("_method", 'PATCH');
+
+			const requestOptions = {
+        method: "POST",
         body: formData,
       };
 
-      fetch(`/posts/${this.post.slug}`, requestOptions)
+      fetch(`/api/posts/${this.post.slug}`, requestOptions)
         .then((response) => response.json())
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));
