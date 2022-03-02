@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+<!--		<p>{{getCurrentUser.token}}</p>-->
     <ul class="ps-0 col-10 col-lg-5 mx-auto">
       <li v-for="post in posts" :key="post.id">
         <post-card :post="post">
@@ -21,6 +22,7 @@ import Comments from "./Comments.vue";
 import MenuItem from "./MenuItem.vue";
 import DeleteModal from "./DeleteModal.vue";
 import EditModal from "./EditModal.vue";
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -62,6 +64,9 @@ export default {
       console.log("Something went wrong", error);
     }
   },
+	computed: mapGetters([
+		'getCurrentUser'
+	])
 };
 </script>
 

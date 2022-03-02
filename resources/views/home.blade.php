@@ -23,7 +23,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossorigin="anonymous"
     />
-    
+
 
 
     <title>thegram</title>
@@ -40,5 +40,6 @@
 {{--<script src="js/main.js"></script>--}}
 <script src="{{ mix('js/main.js') }}"></script>
 {{--http://localhost:8081/js/main.js--}}
+
 </body>
 </html>

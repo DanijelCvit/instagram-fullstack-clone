@@ -25,7 +25,7 @@ export default {
   props: ["user"],
   async mounted() {
     try {
-      const res = await fetch("/user/posts/10000");
+      const res = await fetch("/api/posts");
       const posts = await res.json();
       this.posts = posts;
     } catch (error) {

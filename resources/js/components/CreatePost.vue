@@ -13,7 +13,7 @@
           <input
             type="hidden"
             name="user_id"
-            :value="user.id"
+            :value="getCurrentUser.user.id"
             class="form-control my-3"
           />
           <label for="Image">Image</label>
@@ -45,6 +45,7 @@
 
 <script>
 import PostCard from "@/components/PostCard.vue";
+import {mapGetters} from "vuex";
 export default {
   name: "CreatePost",
   components: {
@@ -85,7 +86,11 @@ export default {
       reader.readAsDataURL(file);
     },
   },
-  async mounted() {},
+  computed: {
+		...mapGetters([
+			'getCurrentUser'
+		]),
+	},
 };
 </script>
 
