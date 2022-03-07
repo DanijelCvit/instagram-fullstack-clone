@@ -52,12 +52,7 @@
 
 		},
 		props: ['swapComponent'],
-		// methods: {
-		// 	swapComponent: function(component) {
-		// 		this.dynamicComponent = component;
 
-		// 	}
-		// },
 		computed: {
 			imageUrl() {
 				return this.appUrl ? this.appUrl + this.user.image : this.user.image;

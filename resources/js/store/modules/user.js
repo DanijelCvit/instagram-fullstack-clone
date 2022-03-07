@@ -15,30 +15,53 @@ const getters = {
 
 const actions = {
 	async login({ commit }, loginComponent) {
-		var myHeaders = new Headers();
-		myHeaders.append("Accept", "application/json");
-		myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-		var urlencoded = new URLSearchParams();
-		urlencoded.append("email", loginComponent.form.email);
-		urlencoded.append("password", loginComponent.form.password);
+		if (!localStorage.getItem('user_id')) {
+			var myHeaders = new Headers();
+			myHeaders.append("Accept", "application/json");
+			myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-		var requestOptions = {
-			method: 'POST',
-			headers: myHeaders,
-			body: urlencoded,
-			redirect: 'follow'
-		};
+			var urlencoded = new URLSearchParams();
+			urlencoded.append("email", loginComponent.form.email);
+			urlencoded.append("password", loginComponent.form.password);
 
-		fetch("http://localhost:8000/api/login", requestOptions)
-			.then(response => response.json())
-			.then(function(result) {
-				loginComponent.form.email = "";
-				loginComponent.form.password = "";
-				document.cookie = `token=${result.token}`
-				commit('setCurrentUser', result)
-				loginComponent.$router.push('/')
-			});
+			var requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: urlencoded,
+				redirect: 'follow'
+			};
+
+			fetch("http://localhost:8000/api/login", requestOptions)
+				.then(response => response.json())
+				.then(function(result) {
+					loginComponent.form.email = "";
+					loginComponent.form.password = "";
+					localStorage.setItem('token', result.token)
+					localStorage.setItem('user_id', result.user.id)
+					localStorage.setItem('first_name', result.user.first_name)
+					localStorage.setItem('last_name', result.user.last_name)
+					localStorage.setItem('username', result.user.username)
+					localStorage.setItem('email', result.user.email)
+					localStorage.setItem('image', result.user.image)
+					commit('setCurrentUser', result)
+					loginComponent.$router.push('/')
+				});
+		} else {
+			let fromStorage = {
+				token: localStorage.getItem('token'),
+				user: {
+					user_id: localStorage.getItem('user_id'),
+					first_name: localStorage.getItem('first_name'),
+					last_name: localStorage.getItem('last_name'),
+					username: localStorage.getItem('username'),
+					email: localStorage.getItem('email'),
+					image: localStorage.getItem('image'),
+				}
+			}
+			commit('setCurrentUser', fromStorage)
+		}
+
 	}
 }
 

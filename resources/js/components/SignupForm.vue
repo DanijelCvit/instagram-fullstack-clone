@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form class="container card py-2 my-5 shadow" action="http://localhost:3000/user/" method="post" enctype="multipart/form-data">
+		<form class="container card py-2 my-5 shadow" action="http://localhost:8000/user/" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<h2 class="text-center">Signup</h2>
 				<img id="profilepic" class="rounded-circle mx-auto d-block my-3" :src="image" alt="">

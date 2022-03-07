@@ -46,6 +46,8 @@
 <script>
 import PostCard from "@/components/PostCard.vue";
 import {mapGetters} from "vuex";
+import {mapState} from 'vuex';
+
 export default {
   name: "CreatePost",
   components: {
@@ -54,15 +56,12 @@ export default {
 
   data() {
     return {
-      user: {
-        id: 10000,
-      },
       post: {
-        image: "storage/images/placeholder.jpg",
+        image: "images/placeholder.jpg",
         description: "Description",
 				author: {
-					username: "username",
-					image: "storage/images/placeholder.jpg",
+					username: 'username',
+					image: "images/placeholder.jpg",
 				}
       },
     };
@@ -87,10 +86,26 @@ export default {
     },
   },
   computed: {
+		// ...mapState({
+		// 	user: state => state.user,
+		// 	post: {
+		// 		image: "images/placeholder.jpg",
+		// 		description: "Description",
+		// 		author: {
+		// 			username: state => state.user.username,
+		//
+		// 		}
+		// 	}
+		//
+		// }),
 		...mapGetters([
 			'getCurrentUser'
 		]),
 	},
+	created(){
+		this.post.author.username = localStorage.getItem('username');
+		this.post.author.image = localStorage.getItem('image');
+	}
 };
 </script>
 
