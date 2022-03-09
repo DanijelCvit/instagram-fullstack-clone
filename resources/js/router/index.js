@@ -40,7 +40,13 @@ const routes = [
     component: User,
 		meta: {
 			requiresAuth: true
-		}
+		},
+		children: [
+			{
+				path: ':username',
+				component: User,
+			}
+		]
   },
 	{
 		path: "/Login",
