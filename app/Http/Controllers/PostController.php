@@ -21,6 +21,7 @@ class PostController extends Controller
             ->get()
             ->map(function ($post) {
                 return [
+									'id' => $post['id'],
 										'slug' => $post['slug'],
                     'description' => $post['description'],
                     'image' => $post['image'],
@@ -67,13 +68,23 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post =  [
-					'slug' => $post['slug'],
-					'description' => $post['description'],
-                'image' => $post['image'],
-                'created_at' => $post['created_at']->diffForHumans(),
-                'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]
-            ];
+        $post =   [
+			'id' => $post['id'],
+			'slug' => $post['slug'],
+			'description' => $post['description'],
+			'image' => $post['image'],
+			'created_at' => $post['created_at']->diffForHumans(),
+			'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']],
+			'comments' => $post->comments->map(function ($comment){
+				return [
+					'comment' => $comment['comment'],
+					'created_at' => $comment['created_at'],
+					'updated_at' => $comment['updated_at'],
+					'author' => $comment['author']['username']
+
+				];
+			})
+		];
 
         return response($post);
     }

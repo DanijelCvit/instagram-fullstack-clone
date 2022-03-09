@@ -9,7 +9,7 @@
             <delete-modal :post="post" @onDelete="deletePost($event)" />
             <edit-modal :post="post" @onEdit="updatePosts($event)" />
           </template>
-          <comments :comments="post.comments ? post.comments : []"/>
+          <comments :post="post" @onCreate="addComment($event)"/>
         </post-card>
       </li>
     </ul>
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import PostCard from "@/components/PostCard.vue";
+import PostCard from "./PostCard.vue";
 import Comments from "./Comments.vue";
 import MenuItem from "./MenuItem.vue";
 import DeleteModal from "./DeleteModal.vue";
 import EditModal from "./EditModal.vue";
-import { mapGetters } from 'vuex';
+import {mapGetters} from 'vuex';
 
 export default {
   components: {
@@ -44,17 +44,19 @@ export default {
   },
   methods: {
     updatePosts(updatedPost) {
-      const newPosts = this.posts.map((post) =>
-        post.slug === updatedPost.slug ? updatedPost : post
-      );
-      this.posts = newPosts;
+			this.posts = this.posts.map((post) =>
+				post.slug === updatedPost.slug ? updatedPost : post
+			);
     },
     deletePost(postToDelete) {
-      const newPosts = this.posts.filter(
-        (post) => post.slug !== postToDelete.slug
-      );
-      this.posts = newPosts;
+			this.posts = this.posts.filter(
+				(post) => post.slug !== postToDelete.slug
+			);
     },
+		addComment(comment){
+			 this.posts.find(post => post.id === comment.post_id).comments.push({...comment, created_at: new Date(), updated_at: new Date()});
+
+		}
   },
   async mounted() {
     try {

@@ -34,6 +34,7 @@ class CommentController extends Controller
 			$attributes['user_id'] = 1;//auth()->id();
 
 				 Comment::create($attributes);
+
     }
 
     /**
