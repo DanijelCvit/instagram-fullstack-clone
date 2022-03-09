@@ -10,12 +10,13 @@ class Comment extends Model
     use HasFactory;
 
 	protected $guarded = [];
+	protected $with = ['author:id,username'];
 
     public function post(){
-        $this->belongsTo(Post::class, 'post_id');
+     return   $this->belongsTo(Post::class, 'post_id');
     }
 
     public function author(){
-        $this->belongsTo(User::class, 'user_id');
+       return $this->belongsTo(User::class, 'user_id');
     }
 }

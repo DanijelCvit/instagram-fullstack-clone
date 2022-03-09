@@ -9,7 +9,7 @@
             <delete-modal :post="post" @onDelete="deletePost($event)" />
             <edit-modal :post="post" @onEdit="updatePosts($event)" />
           </template>
-          <comments />
+          <comments :comments="post.comments ? post.comments : []"/>
         </post-card>
       </li>
     </ul>

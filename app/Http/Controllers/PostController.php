@@ -25,7 +25,16 @@ class PostController extends Controller
                     'description' => $post['description'],
                     'image' => $post['image'],
                     'created_at' => $post['created_at']->diffForHumans(),
-                    'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]
+                    'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']],
+									'comments' => $post->comments->map(function ($comment){
+										return [
+											'comment' => $comment['comment'],
+											'created_at' => $comment['created_at'],
+											'updated_at' => $comment['updated_at'],
+											'author' => $comment['author']['username']
+
+										];
+									})
                 ];
             })->all();
     }
