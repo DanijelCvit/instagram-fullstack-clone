@@ -13,9 +13,11 @@
 						<span class="col-4">Following:<br>{{user.following}}</span>
 					</div>
 					<p class="h5 mt-3">{{user.first_name}} {{user.last_name}}</p>
-					<p>{{user.email}}</p>
-					<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
-					<button @click="swapComponent('editProfile')" class="btn btn-outline-danger">Logout</button>
+					<div v-if="getCurrentUser.user.user_id==user.id">
+						<p>{{user.email}}</p>
+						<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
+						<button @click="swapComponent('editProfile')" class="btn btn-outline-danger">Logout</button>
+					</div>
 				</div>
 			</div>
 
@@ -48,7 +50,7 @@
 					last_name: "",
 					username: '',
 					password: "",
-					image: "https://picsum.photos/200",
+					image: "images/placeholder.jpg",
 					postCount: "0",
 					followers: "0",
 					following: "0",
