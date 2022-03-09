@@ -13,7 +13,9 @@
 			</template>
 			<template v-else>
 				<p class="card-text">
-					<span class="fw-bold pe-1">{{ comments[0].username }}</span>
+					<a :href="'/#/user/'+comments[0].username" class="text-decoration-none link-dark">
+						<span class="fw-bold pe-1">{{ comments[0].username }}</span>
+					</a>
 					{{ comments[0].comment }}
 				</p>
 				<a href="#" @click.prevent="showMore" class="pe-auto text-muted text-decoration-none">View more comments</a>
