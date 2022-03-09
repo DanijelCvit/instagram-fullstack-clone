@@ -58,11 +58,11 @@ export default {
   data() {
     return {
       post: {
-        image: "https://via.placeholder.com/700?text=Placeholder",
+        image: "images/placeholder.jpg",
         description: "Description",
 				author: {
 					username: 'username',
-					image: "https://via.placeholder.com",
+					image: "images/placeholder.jpg",
 				}
       },
     };

@@ -2,14 +2,18 @@
   <div class="card shadow">
     <div class="d-flex align-items-center justify-content-between p-1">
       <div class="d-flex align-items-center">
-        <img
-          id="avatar"
-          :src="post.author.image"
+				<a :href="'/#/user/'+post.author.username">
+					<img
+						id="avatar"
+						:src="post.author.image"
 
-          class="card-img-top rounded-circle p-1"
-          alt=""
-        />
-        <h5 class="card-title ps-2">{{ post.author.username }}</h5>
+						class="card-img-top rounded-circle p-1"
+						alt=""
+					/>
+				</a>
+				<a :href="'/#/user/'+post.author.username" class="text-decoration-none link-dark">
+        	<h5 class="card-title ps-2">{{ post.author.username }}</h5>
+				</a>
       </div>
       <slot name="menu"></slot>
     </div>
@@ -21,8 +25,10 @@
     <div id="text-body" class="card-body">
       <p v-if="post.created_at">Posted {{ post.created_at }}</p>
       <p class="card-text">
-        <span class="fw-bold pe-1">{{ post.author.username }}</span
-        >{{ post.description }}
+				<a :href="'/#/user/'+post.author.username" class="text-decoration-none link-dark">
+					<span class="fw-bold pe-1">{{ post.author.username }}</span>
+				</a>
+				{{ post.description }}
       </p>
     </div>
     <slot></slot>
@@ -58,17 +64,5 @@ export default {
   margin: 0;
   font-size: 0.8rem;
 }
-/*
 
-.card-body {
-  font-size: 0.85rem;
-}
-
-.fa-heart {
-  font-size: 1.5rem;
-}
-
-#text-body {
-  padding-top: 0;
-} */
 </style>
