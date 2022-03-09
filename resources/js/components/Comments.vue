@@ -4,7 +4,9 @@
 
 			<template v-if="showComments">
 					<p v-for="comment in comments" :key="comment.id" class="card-text">
-						<span class="fw-bold pe-1">{{ comment.username }}</span>
+						<a :href="'/#/user/'+comment.username" class="text-decoration-none link-dark">
+							<span class="fw-bold pe-1">{{ comment.username }}</span>
+						</a>
 						{{ comment.comment }}
 					</p>
 				<a href="#" @click.prevent="showMore" class="pe-auto text-muted text-decoration-none">View less comments</a>
