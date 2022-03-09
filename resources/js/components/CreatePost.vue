@@ -2,6 +2,7 @@
   <div class="row justify-content-center mt-5">
     <div class="col-7 col-lg-3 mb-4">
       <form
+				@submit.prevent="createPost"
         class="container card shadow py-2"
         enctype="multipart/form-data"
         action="/api/posts"
@@ -57,17 +58,40 @@ export default {
   data() {
     return {
       post: {
-        image: "images/placeholder.jpg",
+        image: "https://via.placeholder.com/700?text=Placeholder",
         description: "Description",
 				author: {
 					username: 'username',
-					image: "images/placeholder.jpg",
+					image: "https://via.placeholder.com",
 				}
       },
     };
   },
 
   methods: {
+		async createPost(){
+			var myHeaders = new Headers();
+			myHeaders.append("Accept", "application/json");
+			myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+			myHeaders.append("Authorization", "Bearer "); //TODO add bearer token
+
+			var formdata = new FormData();
+			formdata.append("image", fileInput.files[0], "[PROXY]");
+			formdata.append("description", "Hello Kitty");
+
+			var requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: formdata,
+				redirect: 'follow'
+			}
+
+			try {
+				const res = await fetch("localhost:8000/api/posts/", requestOptions)
+			} catch (error) {
+				console.log("Something went wrong", error);
+			}
+		},
     updateDescription(e) {
       this.post.description = e.target.value;
     },

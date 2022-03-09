@@ -87,6 +87,7 @@
         >
           Save Changes
         </button>
+				<button @click="swapComponent('userProfile')" class="btn btn-light my-3 row w-25 mx-auto d-block">Cancel</button>
       </div>
     </form>
   </div>
@@ -115,7 +116,7 @@ export default {
       fileInput: "",
     };
   },
-
+	props: ['swapComponent'],
   async mounted() {
 
   },

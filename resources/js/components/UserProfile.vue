@@ -2,7 +2,7 @@
 	<div class="container mt-5">
 		<div class="shadow row justify-content-center bg-white rounded py-3 mx-lg-5 mx-xl-5">
 			<div class="col-12 col-md-6 col-lg-6 justify-content-center d-flex align-items-center flex-wrap mb-3">
-				<img :src="imageUrl" alt="" class="profile-pic rounded-circle mx-auto">
+				<img :src="getCurrentUser.user.image" alt="" class="profile-pic rounded-circle mx-auto">
 			</div>
 			<div class="col-8 col-md-6 col-lg-6 text-center">
 				<p class="h3">@{{getCurrentUser.user.username}}</p>
@@ -14,6 +14,7 @@
 				<p class="h5 mt-3">{{getCurrentUser.user.first_name}} {{getCurrentUser.user.last_name}}</p>
 				<p>{{getCurrentUser.user.email}}</p>
 				<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
+				<button @click="swapComponent('editProfile')" class="btn btn-outline-danger">Logout</button>
 
 
 			</div>
@@ -33,14 +34,14 @@
 	export default {
 		data() {
 			return {
-			  	user: {
-					id: "",
+				user: {
+					id: localStorage.getItem('user_id'),
 					email: "",
 					first_name: "",
 					last_name: "",
-					username: "user-not-found",
+					username: localStorage.getItem('username'),
 					password: "",
-					image: "images/placeholder.jpg",
+					image: "https://via.placeholder.com",
 					postCount: "0",
 					followers: "0",
 					following: "0",
@@ -54,9 +55,9 @@
 		props: ['swapComponent'],
 
 		computed: {
-			imageUrl() {
-				return this.appUrl ? this.appUrl + this.user.image : this.user.image;
-			},
+			// imageUrl() {
+			// 	return this.appUrl ? this.appUrl + this.user.image : this.user.image;
+			// },
 			...mapGetters([
 				'getCurrentUser'
 			])

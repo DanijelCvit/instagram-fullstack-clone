@@ -14,20 +14,17 @@ export default {
   },
   data() {
     return {
-      // user: {
-      //   //name: "danijel",
-      //   avatar:
-      //     "https://thumbs.dreamstime.com/b/funny-cartoon-monster-face-vector-square-avatar-halloween-175916751.jpg",
-      // },
       posts: [],
     };
   },
   props: ["user"],
   async mounted() {
-    try {
-      const res = await fetch("/api/posts");
+    const vm = this
+		try {
+      const res = await fetch(`/api/posts/user/30`);
       const posts = await res.json();
-      this.posts = posts;
+      vm.posts = await posts;
+			//console.log(this.posts)
     } catch (error) {
       console.log("Something went wrong", error);
     }

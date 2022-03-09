@@ -15,13 +15,9 @@
           <the-search />
         </div>
         <div id="right" class="d-flex">
-          <router-link to="/signup" class="nav-link"
-            ><i class="far fa-plus-square"></i
-          ></router-link>
-          <router-link to="/user" class="nav-link"
-            ><i class="fas fa-user-circle"></i
-          ></router-link>
-
+          <router-link to="/user" class="nav-link ms-5">
+						<i class="fas fa-user-circle"></i>
+					</router-link>
         </div>
       </div>
     </div>

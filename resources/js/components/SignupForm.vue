@@ -68,6 +68,7 @@
 
 				</div>
 				<button type="submit" class="btn btn-primary my-3 row w-25 mx-auto d-block">Signup</button>
+				<router-link tag="button" class="btn btn-secondary my-3 row w-25 mx-auto d-block" to="/login">Login Instead</router-link>
 			</div>
 		</form>
 	</div>
