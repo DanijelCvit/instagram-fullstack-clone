@@ -15,7 +15,7 @@
         	<h5 class="card-title ps-2">{{ post.author.username }}</h5>
 				</a>
       </div>
-      <slot name="menu"></slot>
+      <slot name="menu" v-if="getCurrentUser.user.username==post.author.username"></slot>
     </div>
     <img :src="post.image" class="" alt="" />
     <div class="card-body">
@@ -37,6 +37,8 @@
 
 <script>
 
+import {mapGetters} from "vuex";
+
 export default {
   props: ["post"],
 	data(){
@@ -44,7 +46,12 @@ export default {
 		}
 	},
 	mounted(){
-	}
+	},
+	computed: {
+		...mapGetters([
+			'getCurrentUser'
+		])
+	},
 };
 </script>
 
