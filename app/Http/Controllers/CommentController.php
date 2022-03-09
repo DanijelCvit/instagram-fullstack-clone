@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -13,7 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return response(['status'=> 418, 'message' => 'No comment id specified'], 418);
     }
 
     /**
@@ -24,40 +25,52 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+					'comment' => 'required',
+					'post_id' => 'required'
+				]);
+
+
+			$attributes['user_id'] = 1;//auth()->id();
+
+				 Comment::create($attributes);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
-        //
+				return response($comment, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $attributes = $request->validate([
+					'comment' => 'required',
+				]);
+
+				$comment->update($attributes);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
     }
 }

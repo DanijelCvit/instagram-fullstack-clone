@@ -53,7 +53,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $slug
+     * @param Post $post
      * @return Response
      */
     public function show(Post $post)

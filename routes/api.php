@@ -31,9 +31,7 @@ Route::apiResource('user', UserController::class, [
 ]);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/user/search/{username}', [UserController::class, 'search']);
-Route::apiResource('comments', CommentController::class, [
-	'only' => ['show']
-]);
+Route::apiResource('comments', CommentController::class);
 Route::apiResource('tags', TagController::class, [
 	'only' => ['show']
 ]);
@@ -47,9 +45,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 		'except' => ['show', 'store']
 	]);
 	Route::post('/logout', [UserController::class, 'logout']);
-	Route::apiResource('comments', CommentController::class, [
-		'except' => ['show']
-	]);
+//	Route::apiResource('comments', CommentController::class, [
+//		'except' => ['show']
+//	]);
 	Route::apiResource('tags', TagController::class, [
 		'except' => ['show']
 	]);
