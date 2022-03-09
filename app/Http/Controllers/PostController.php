@@ -69,6 +69,27 @@ class PostController extends Controller
         return response($post);
     }
 
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param int $id
+	 * @return Response
+	 */
+	public function userPosts(int $id)
+	{
+		return Post::where('user_id', $id)->orderBy('created_at', 'DESC')
+			->get()
+			->map(function ($post) {
+				return [
+					'slug' => $post['slug'],
+					'description' => $post['description'],
+					'image' => $post['image'],
+					'created_at' => $post['created_at']->diffForHumans(),
+					'author' => ['username' => $post['author']['username'], 'image' => $post['author']['image']]
+				];
+			})->all();
+	}
+
     /**
      * Update the specified resource in storage.
      *

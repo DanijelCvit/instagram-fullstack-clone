@@ -37,7 +37,7 @@ Route::apiResource('comments', CommentController::class, [
 Route::apiResource('tags', TagController::class, [
 	'only' => ['show']
 ]);
-
+Route::get('/posts/user/{id}', [PostController::class, 'userPosts']);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function(){
 	Route::apiResource('posts', PostController::class, [

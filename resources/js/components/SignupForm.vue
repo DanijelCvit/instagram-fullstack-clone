@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form class="container card py-2 my-5 shadow" action="http://localhost:3000/user/" method="post" enctype="multipart/form-data">
+		<form class="container card py-2 my-5 shadow" action="http://localhost:8000/user/" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<h2 class="text-center">Signup</h2>
 				<img id="profilepic" class="rounded-circle mx-auto d-block my-3" :src="image" alt="">
@@ -68,6 +68,7 @@
 
 				</div>
 				<button type="submit" class="btn btn-primary my-3 row w-25 mx-auto d-block">Signup</button>
+				<router-link tag="button" class="btn btn-secondary my-3 row w-25 mx-auto d-block" to="/login">Login Instead</router-link>
 			</div>
 		</form>
 	</div>

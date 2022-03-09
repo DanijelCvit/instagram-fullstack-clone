@@ -10,10 +10,10 @@
         <img
           id="profilepic"
           class="rounded-circle mx-auto d-block my-3"
-          :src="user.image"
+          :src="getCurrentUser.user.image"
           alt=""
         />
-        <h5 class="text-center">@{{ user.username }}</h5>
+        <h5 class="text-center">@{{ getCurrentUser.user.username }}</h5>
         <br />
         <div class="row justify-content-center">
           <div class="col-12 col-sm-5 col-xl-3">
@@ -35,7 +35,7 @@
                 autocomplete="username"
                 id="username"
                 name="username"
-                :value="user.username"
+                :value="getCurrentUser.user.username"
                 @keyup="updateUsername"
                 required
               />
@@ -46,7 +46,7 @@
               type="email"
               id="email"
               name="email"
-              :value="user.email"
+              :value="getCurrentUser.user.email"
               required
             />
           </div>
@@ -57,7 +57,7 @@
               type="text"
               id="firstName"
               name="first_name"
-              :value="user.first_name"
+              :value="getCurrentUser.user.first_name"
               required
             />
             <label for="lastName">Last Name</label>
@@ -66,7 +66,7 @@
               type="text"
               id="lastName"
               name="last_name"
-              :value="user.last_name"
+              :value="getCurrentUser.user.last_name"
               required
             />
             <label for="password">Password</label>
@@ -87,12 +87,15 @@
         >
           Save Changes
         </button>
+				<button @click="swapComponent('userProfile')" class="btn btn-light my-3 row w-25 mx-auto d-block">Cancel</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -109,20 +112,13 @@ export default {
         password: "",
         image: "",
       },
-      appUrl: "http://localhost:3000/",
+      appUrl: "http://localhost:8000/",
       fileInput: "",
     };
   },
-
+	props: ['swapComponent'],
   async mounted() {
-    try {
-      const res = await fetch("http://localhost:3000/user/10000");
-      const user = await res.json();
-      this.user = user[0];
-      this.user.password = "";
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
+
   },
   methods: {
     updateUsername(e) {
@@ -163,6 +159,11 @@ export default {
         .catch((error) => console.log("error", error));
     },
   },
+	computed: {
+		...mapGetters([
+			'getCurrentUser'
+		])
+	}
 };
 </script>
 
