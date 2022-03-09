@@ -18,18 +18,23 @@
 						<button @click="swapComponent('editProfile')" class="btn btn-light">Edit Profile</button>
 						<button @click="swapComponent('editProfile')" class="btn btn-outline-danger">Logout</button>
 					</div>
+					<div v-if="!(getCurrentUser.user.user_id==user.id)">
+						<button @click="swapComponent('editProfile')" class="btn btn-outline-primary">Follow</button>
+					</div>
 				</div>
 			</div>
 
 			<!-- Insert Posts Here -->
-			<posts-grid :user="user" v-if="!loading">
+			<posts-grid :user="user" :posts="posts" v-if="!loading || !noPosts">
 			</posts-grid>
 			<div v-if="loading" class="row mt-5 mx-auto text-center">
 				<div class="spinner-border mx-auto text-center" role="status">
 					<span class="sr-only mx-auto text-center">Loading...</span>
 				</div>
 			</div>
-
+			<div v-if="noPosts" class="row mt-5 mx-auto text-center">
+				<p class="mx-auto text-center">No Posts</p>
+			</div>
 		</div>
 		<div v-if="!userExists" class="shadow row justify-content-center bg-white rounded mt-5 py-3 mx-lg-5 mx-xl-5">
 			<p class="card-title text-center display-6 text-muted">404 | User Not Found</p>
@@ -43,6 +48,7 @@
 	export default {
 		data() {
 			return {
+				posts: [],
 				user: {
 					id: '',
 					email: "",
@@ -58,6 +64,7 @@
 				appUrl: "http://localhost:8000/",
 				userExists: true,
 				loading: true,
+				noPosts: false
 			};
 		},
 		async mounted() {
@@ -69,11 +76,24 @@
 				}
 				const res = await fetch(`/api/user/${this.user.username}`);
 				this.user = await res.json();
-				this.loading = false
 			} catch (error) {
 				this.userExists = false
-				this.loading = false
 				console.log(error)
+			} finally {
+				try {
+					const response = await fetch(`/api/posts/user/${this.user.id}`);
+					const posts = await response.json();
+					this.posts = await posts;
+					this.loading = false
+					if (this.posts.length === 0) {
+						this.noPosts = true
+					}
+					this.user.postCount = this.posts.length
+				} catch (error) {
+					this.loading = false
+					this.noPosts = true
+					console.log("Something went wrong", error);
+				}
 			}
 
 		},
