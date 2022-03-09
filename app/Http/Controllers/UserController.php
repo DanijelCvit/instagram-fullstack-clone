@@ -132,12 +132,16 @@ class UserController extends Controller
 		/**
 		 * Search by username.
 		 *
-		 * @param  string  $username
+		 * @param  string  $q
 		 * @return string
 		 */
-		public function search($username)
+		public function search($q)
 		{
-			return User::where('username', 'like', '%'.$username.'%')->get();
+			return User::where('username', 'like', '%'.$q.'%')
+				->orWhere('first_name', 'like', '%'.$q.'%')
+				->orWhere('last_name', 'like', '%'.$q.'%')
+				->take(15)
+				->get();
 		}
 
 	/**
